@@ -11,6 +11,10 @@ public class QuizMainFrame extends JFrame {
 
 
 
+        //Buttons für die Beantwortung der Fragen                                                                                              *****Antwortbuttons
+        antwort1 = new JButton("Antwort 1");
+
+
 
 
         //Main Panel für die Anzeige
