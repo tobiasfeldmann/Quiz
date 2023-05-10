@@ -16,6 +16,10 @@ public class Quizfunktionen {
         this.kategorie = kategorie;
     }
 
+    public void naechsteFrage(){
+
+    }
+    
     public int zufaelligeFrageNummerAusgeben(){
         int frageNummer = random.nextInt(50);
         while(fragen.istBereitsBeantwortet(frageNummer)){

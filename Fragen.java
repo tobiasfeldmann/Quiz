@@ -21,6 +21,19 @@ public class Fragen {
         moeglichkeitenKategorieX[1][2] = "Nowhere";
         moeglichkeitenKategorieX[1][3] = "Vormir";
 
+        fragenKategorieMarvel.put(2, "Wer zerstörte Asgard?");
+        richtigeAntwortKategorieMarvel.add("Surtur");
+        moeglichkeitenKategorieX[2][0] = "Hela";
+        moeglichkeitenKategorieX[2][1] = "Surtur";
+        moeglichkeitenKategorieX[2][2] = "Thor";
+        moeglichkeitenKategorieX[2][3] = "Thanos";
+
+        fragenKategorieMarvel.put(3, "Welcher Infinity Stein befand sich im Tesseract?");
+        richtigeAntwortKategorieMarvel.add("Raumstein");
+        moeglichkeitenKategorieX[3][0] = "Gedankenstein";
+        moeglichkeitenKategorieX[3][1] = "Raumstein";
+        moeglichkeitenKategorieX[3][2] = "Seelenstein";
+        moeglichkeitenKategorieX[3][3] = "Zeitstein";
     }
 
     public String gebeFrageAus(int i){
