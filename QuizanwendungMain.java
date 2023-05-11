@@ -4,7 +4,6 @@ public class QuizanwendungMain {
         Fragen fragen = new Fragen();
         QuizMainFrame main = new QuizMainFrame();
         main.initialize(fragen, quizfunktionen);
-        fragen.initialisierefragenKategorieMarvel();
-        fragen.gebeFrageAus(1);
+        fragen.gebeFrageAus(quizfunktionen.zufaelligeFrageNummerAusgeben());
     }
 }

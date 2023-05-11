@@ -7,6 +7,7 @@ public class QuizMainFrame extends JFrame {
     final private Font centerFont = new Font("Arial", Font.PLAIN, 28);
     JButton antwort1, antwort2, antwort3, antwort4, kategorieMarvel, kategorieOstfriesland, naechsteFrage, startButton, fiftyfiftyJoker1Button, fiftyfiftyJoker2Button, loesungsButton, eineAntwortRausnehmen1Button, eineAntwortRausnehmen2Button;
     JLabel anzeigeFrage, anzeigePunkte, anzeigeStreak, anzeigeKategorie;
+    int temp;
 
     public void initialize(Fragen fragen, Quizfunktionen quizfunktionen){
 
@@ -36,7 +37,7 @@ public class QuizMainFrame extends JFrame {
         kategorieMarvel.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
-
+                anzeigeKategorie.setText(kategorieMarvel.getText());
             }
         });
 
@@ -45,7 +46,7 @@ public class QuizMainFrame extends JFrame {
         kategorieOstfriesland.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
-
+                anzeigeKategorie.setText(kategorieOstfriesland.getText());
             }
         });
 
@@ -154,7 +155,7 @@ public class QuizMainFrame extends JFrame {
         loesungsButton.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-
+                quizfunktionen.deckeLoesungAuf(temp);
             }
         });
 
@@ -175,7 +176,12 @@ public class QuizMainFrame extends JFrame {
         naechsteFrage.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
-
+                temp = quizfunktionen.zufaelligeFrageNummerAusgeben();
+                anzeigeFrage.setText(fragen.gebeFrageAus(temp));
+                antwort1.setText(fragen.gebeAntwortenAus(temp)[0]);
+                antwort2.setText(fragen.gebeAntwortenAus(temp)[1]);
+                antwort3.setText(fragen.gebeAntwortenAus(temp)[2]);
+                antwort4.setText(fragen.gebeAntwortenAus(temp)[3]);
             }
         });
         //                                                                                                                                                      ****StartButton
@@ -184,7 +190,12 @@ public class QuizMainFrame extends JFrame {
         startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
-
+                temp = quizfunktionen.zufaelligeFrageNummerAusgeben();
+                anzeigeFrage.setText(fragen.gebeFrageAus(temp));
+                antwort1.setText(fragen.gebeAntwortenAus(temp)[0]);
+                antwort2.setText(fragen.gebeAntwortenAus(temp)[1]);
+                antwort3.setText(fragen.gebeAntwortenAus(temp)[2]);
+                antwort4.setText(fragen.gebeAntwortenAus(temp)[3]);
             }
         });
         //                                                                                                                                                      *****ButtonPanelSouth

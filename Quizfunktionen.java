@@ -1,30 +1,22 @@
 import java.util.Random;
 
 public class Quizfunktionen {
-    int anzahlFragen = 0;
-    String kategorie = "";
+    int streakCounter = 0;
     int punkte = 0;
 
     Fragen fragen = new Fragen();
     Random random = new Random();
 
-    public void setzeAnzahlFragen(int anzahlFragen){
-        this.anzahlFragen = anzahlFragen;
-    }
-
-    public void setzeKategorie(String kategorie){
-        this.kategorie = kategorie;
-    }
-
-    public void naechsteFrage(){
-
-    }
-    
     public int zufaelligeFrageNummerAusgeben(){
-        int frageNummer = random.nextInt(50);
+        int frageNummer = random.nextInt(MarvelFragen.fragen.length);
         while(fragen.istBereitsBeantwortet(frageNummer)){
-            frageNummer = random.nextInt(50);
+            frageNummer = random.nextInt(MarvelFragen.fragen.length);
         }
         return frageNummer;
+    }
+
+    public void deckeLoesungAuf(int i){
+        String richtigeAntwort = MarvelFragen.richtigeAntwort[i];
+        
     }
 }
