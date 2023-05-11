@@ -4,7 +4,7 @@ import javax.swing.*;
 
 public class QuizMainFrame extends JFrame {
     final private Font mainFont = new Font("Arial", Font.PLAIN, 18);
-    final private Font centerFont = new Font("Arial", Font.PLAIN, 28);
+    final private Font centerFont = new Font("Arial", Font.PLAIN, 24);
     JButton antwort1, antwort2, antwort3, antwort4, kategorieMarvel, kategorieOstfriesland, naechsteFrage, startButton, fiftyfiftyJoker1Button, fiftyfiftyJoker2Button, loesungsButton, eineAntwortRausnehmen1Button, eineAntwortRausnehmen2Button;
     JLabel anzeigeFrage, anzeigePunkte, anzeigeStreak, anzeigeKategorie;
     int temp;
@@ -32,7 +32,7 @@ public class QuizMainFrame extends JFrame {
 
 
         //Anzeige der Kategorie bzw. buttons um hin und her zu wechseln                                                                                     ****Buttons fuer die Kategorien
-        kategorieMarvel = new JButton("Marvel");
+        kategorieMarvel = new JButton("     Marvel   ");
         kategorieMarvel.setFont(mainFont);
         kategorieMarvel.addActionListener(new ActionListener() {
             @Override
@@ -69,7 +69,8 @@ public class QuizMainFrame extends JFrame {
         antwort1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
-                
+                quizfunktionen.verteiltPunkte(fragen.vergleichtAnwortUndFrage(antwort1.getText()));
+                anzeigePunkte.setText(quizfunktionen.gebePunkteAus());
             }
         });
 
@@ -78,7 +79,9 @@ public class QuizMainFrame extends JFrame {
         antwort2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
-                
+                quizfunktionen.verteiltPunkte(fragen.vergleichtAnwortUndFrage(antwort2.getText()));
+                anzeigePunkte.setText(quizfunktionen.gebePunkteAus());
+                antwort2.setBackground(new Color(128, 128, 255));
             }
         });
 
@@ -87,7 +90,8 @@ public class QuizMainFrame extends JFrame {
         antwort3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
-                
+                quizfunktionen.verteiltPunkte(fragen.vergleichtAnwortUndFrage(antwort3.getText()));
+                anzeigePunkte.setText(quizfunktionen.gebePunkteAus());
             }
         });
 
@@ -96,7 +100,12 @@ public class QuizMainFrame extends JFrame {
         antwort4.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
-                
+                quizfunktionen.verteiltPunkte(fragen.vergleichtAnwortUndFrage(antwort4.getText()));
+                /*if(Integer.parseInt(quizfunktionen.gebePunkteAus()) > Integer.parseInt(anzeigePunkte.getText())){
+                    antwort4.setBackground(new Color(255,0,0));
+
+                }*/
+                anzeigePunkte.setText(quizfunktionen.gebePunkteAus());
             }
         });
 
@@ -119,7 +128,25 @@ public class QuizMainFrame extends JFrame {
         fiftyfiftyJoker1Button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
-
+                String stringTemp = quizfunktionen.deckeLoesungAuf(temp, antwort1.getText(), antwort2.getText(), antwort3.getText(), antwort4.getText());
+                System.out.println(stringTemp);
+                if(stringTemp.equals(antwort1.getText())){
+                    antwort2.setText("");
+                    antwort3.setText("");
+                }
+                else if(stringTemp.equals(antwort2.getText())){
+                    antwort1.setText("");
+                    antwort4.setText("");
+                }
+                else if(stringTemp.equals(antwort3.getText())){
+                    antwort1.setText("");
+                    antwort4.setText("");
+                }
+                else if(stringTemp.equals(antwort4.getText())){
+                    antwort2.setText("");
+                    antwort3.setText("");
+                }
+                fiftyfiftyJoker1Button.setEnabled(false);
             }
         });
 
@@ -128,7 +155,25 @@ public class QuizMainFrame extends JFrame {
         fiftyfiftyJoker2Button.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-
+                String stringTemp = quizfunktionen.deckeLoesungAuf(temp, antwort1.getText(), antwort2.getText(), antwort3.getText(), antwort4.getText());
+                System.out.println(stringTemp);
+                if(stringTemp.equals(antwort1.getText())){
+                    antwort2.setText("");
+                    antwort3.setText("");
+                }
+                else if(stringTemp.equals(antwort2.getText())){
+                    antwort1.setText("");
+                    antwort4.setText("");
+                }
+                else if(stringTemp.equals(antwort3.getText())){
+                    antwort1.setText("");
+                    antwort4.setText("");
+                }
+                else if(stringTemp.equals(antwort4.getText())){
+                    antwort2.setText("");
+                    antwort3.setText("");
+                }
+                fiftyfiftyJoker2Button.setEnabled(false);
             }
         });
 
@@ -137,7 +182,33 @@ public class QuizMainFrame extends JFrame {
         eineAntwortRausnehmen1Button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
-
+                String stringTemp = quizfunktionen.entferneEineLoesung(temp, antwort1.getText(), antwort2.getText(), antwort3.getText(), antwort4.getText());
+                System.out.println(stringTemp);
+                if(stringTemp.equals(antwort1.getText())){
+                    if(antwort2.getText().equals("")){
+                        antwort3.setText("");
+                    }
+                    antwort2.setText("");
+                }
+                else if(stringTemp.equals(antwort2.getText())){
+                    if(antwort4.getText().equals("")){
+                        antwort3.setText("");
+                    }
+                    antwort4.setText("");
+                }
+                else if(stringTemp.equals(antwort3.getText())){
+                    if(antwort3.getText().equals("")){
+                        antwort2.setText("");
+                    }
+                    antwort1.setText("");
+                }
+                else if(stringTemp.equals(antwort4.getText())){
+                    if(antwort1.getText().equals("")){
+                        antwort2.setText("");
+                    }
+                    antwort3.setText("");
+                }
+                eineAntwortRausnehmen1Button.setEnabled(false);
             }
         });
 
@@ -146,7 +217,33 @@ public class QuizMainFrame extends JFrame {
         eineAntwortRausnehmen2Button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
-                
+                String stringTemp = quizfunktionen.entferneEineLoesung(temp, antwort1.getText(), antwort2.getText(), antwort3.getText(), antwort4.getText());
+                System.out.println(stringTemp);
+                if(stringTemp.equals(antwort1.getText())){
+                    if(antwort2.getText().equals("")){
+                        antwort3.setText("");
+                    }
+                    antwort2.setText("");
+                }
+                else if(stringTemp.equals(antwort2.getText())){
+                    if(antwort4.getText().equals("")){
+                        antwort3.setText("");
+                    }
+                    antwort4.setText("");
+                }
+                else if(stringTemp.equals(antwort3.getText())){
+                    if(antwort3.getText().equals("")){
+                        antwort2.setText("");
+                    }
+                    antwort1.setText("");
+                }
+                else if(stringTemp.equals(antwort4.getText())){
+                    if(antwort1.getText().equals("")){
+                        antwort2.setText("");
+                    }
+                    antwort3.setText("");
+                }
+                eineAntwortRausnehmen2Button.setEnabled(false); 
             }
         });
 
@@ -155,7 +252,29 @@ public class QuizMainFrame extends JFrame {
         loesungsButton.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                quizfunktionen.deckeLoesungAuf(temp);
+                String stringTemp = quizfunktionen.deckeLoesungAuf(temp, antwort1.getText(), antwort2.getText(), antwort3.getText(), antwort4.getText());
+                System.out.println(stringTemp);
+                if(stringTemp.equals(antwort1.getText())){
+                    antwort2.setText("");
+                    antwort3.setText("");
+                    antwort4.setText("");
+                }
+                else if(stringTemp.equals(antwort2.getText())){
+                    antwort1.setText("");
+                    antwort3.setText("");
+                    antwort4.setText("");
+                }
+                else if(stringTemp.equals(antwort3.getText())){
+                    antwort2.setText("");
+                    antwort1.setText("");
+                    antwort4.setText("");
+                }
+                else if(stringTemp.equals(antwort4.getText())){
+                    antwort2.setText("");
+                    antwort3.setText("");
+                    antwort1.setText("");
+                }
+                loesungsButton.setEnabled(false);
             }
         });
 
@@ -171,7 +290,7 @@ public class QuizMainFrame extends JFrame {
 
 
         //Panel South, Start / NaechsteFrage Button plus Panel                                                                                                  *****naechsteFrage Button
-        naechsteFrage = new JButton("Nächste Frage (unterbricht Streak!)");
+        naechsteFrage = new JButton("Nächste Frage");
         naechsteFrage.setFont(mainFont);
         naechsteFrage.addActionListener(new ActionListener() {
             @Override
