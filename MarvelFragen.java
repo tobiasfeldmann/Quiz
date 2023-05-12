@@ -5,16 +5,16 @@ public class MarvelFragen {
         "Erde", "Titan", "Nowhere", "Vormir",
         "Surtur", "Hela", "Thor", "Thanos",
         "Raumstein", "Gedankenstein", "Seelenstein", "Zeitstein",
-        "Audi","Mercedes","Koenigsegg", "Lamborghini",
+        "Mercedes","Audi","Koenigsegg", "Lamborghini",
         "Brüssel","Berlin","Friedeburg","Budapest",
         "Mary-Jane", "Antonia","Cassie", "Jessica",
         "14.000.605","293.421","420","11.088.205",
         "Monaco", "Madrid", "Lyon","Belgrad",
-        "unvermeidbar","untötbar","unverzeihlich","unabdingbar",
+        "untötbar","unverzeihlich","unvermeidbar","unabdingbar",
         "Im Auge von Agamotto","Im Zahn von Ireldor","Im Tresor von Wakanda","In der Knieprothese der Ältesten",
-        "bisschen trocken","zu nussig","ekelhaft","zu süß",
+        "zu süß","bisschen trocken","zu nussig","ekelhaft",
         "Palladium-Vergiftung","Diarrhoe","Rheuma","Folgen eines Herzinfarkts",
-        "6","5","7","8"
+        "5","6","7","8"
 
     };
 
@@ -29,7 +29,7 @@ public class MarvelFragen {
         "14.000.605",
         "Monaco",
         "unvermeidbar",
-        "Auge von Agamoto",
+        "Im Auge von Agamotto",
         "bisschen trocken",
         "Palladium-Vergiftung",
         "6"

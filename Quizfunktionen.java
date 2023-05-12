@@ -1,6 +1,5 @@
 import java.util.Random;
 import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
 
 public class Quizfunktionen {
@@ -36,7 +35,11 @@ public class Quizfunktionen {
         }
     }
 
-    public void gebeRichtigeAntwort(int i, JButton[] buttonArray, int buttonIndex){
+    /**
+     *gibt die Richtige Antwort aus, falsche werden rot marktiert, die richtige grün
+        @param int i, index der Frage; JButton[] buttonArray ein Array der antwort buttons; int buttonIndex der index des buttons   
+     */ 
+    public void gebeRichtigeAntwort(int i, JButton[] buttonArray, int buttonIndex,Fragen fragen){
         int richtigerButtonIndex = -1;
         String richtigeAntwort = MarvelFragen.richtigeAntwort[i];
         for(int i1 = 0; i1 < buttonArray.length; i1++){
@@ -50,24 +53,28 @@ public class Quizfunktionen {
         }
         if(richtigerButtonIndex == buttonIndex){
             punkte++;
+            fragen.frageErledigt(i);
         }
     }
 
-    //Gibt richtige Lösung zurück, wird deswegen auch für die farbliche Kennzeichung bei falscher/richtiger Antwort verwendet
-    public String entferneEineLoesung(int i, String antwort1, String antwort2, String antwort3, String antwort4){
+    /**
+     * gibt die richtige Lösung zurück, genutzt für den Joker eine Lösung zu entfernen
+     * @param int i index der Frage; JButton[] button array das Array mit den Antwortbuttons
+     */
+    public void entferneEineLoesung(int i, JButton[] buttonArray){
         String richtigeAntwort = MarvelFragen.richtigeAntwort[i];
-        if(richtigeAntwort.equals(antwort1)){
-            return antwort1;
+        int richtigerIndex = -1;
+        for(int i1 = 0; i1 < buttonArray.length; i1++){
+            if(buttonArray[i1].getText().equals(richtigeAntwort)){
+                richtigerIndex = i1;
+            }
+        
+        }  
+        int zufallsZahl = random.nextInt(3);
+        while(zufallsZahl == richtigerIndex || buttonArray[zufallsZahl].getText().equals("")){
+            zufallsZahl = random.nextInt(3);
         }
-        else if(richtigeAntwort.equals(antwort2)){
-            return antwort2;
-        }
-        else if(richtigeAntwort.equals(antwort3)){
-            return antwort3;
-        }
-        else{
-            return antwort4;
-        }
+        buttonArray[zufallsZahl].setText("");
     }
 
     public String gebePunkteAus(){
@@ -76,5 +83,11 @@ public class Quizfunktionen {
 
     public static void popUpAlleFragenBeantwortet(){
         JOptionPane.showMessageDialog(null, "Alle Fragen beantwortet!", "Glückwunsch!", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    public void setzeButtonFarbeZurueck(JButton[] buttonArray, Color color){
+        for(JButton button: buttonArray){
+            button.setBackground(color);
+        }
     }
 }

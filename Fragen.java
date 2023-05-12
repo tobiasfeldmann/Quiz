@@ -1,4 +1,7 @@
 import java.util.*;
+import java.awt.*;
+import javax.swing.*;
+
 public class Fragen {
     String frage = "";
     String richtigeAntwort = "";
@@ -12,15 +15,12 @@ public class Fragen {
         return frage;
     }
 
-    public String[] gebeAntwortenAus(int i){
+    public void gebeAntwortenAus(int i,JButton[] buttonArray){
         int index = i * 4;
-        String[] antworten = {
-            MarvelFragen.antwortenMarvelFragen[index],
-            MarvelFragen.antwortenMarvelFragen[index + 1],
-            MarvelFragen.antwortenMarvelFragen[index + 2],
-            MarvelFragen.antwortenMarvelFragen[index + 3]
-        };
-        return antworten;
+        for(JButton button: buttonArray){
+            button.setText(MarvelFragen.antwortenMarvelFragen[index]);
+            index++;
+        }
     }
 
     public boolean istBereitsBeantwortet(int i){

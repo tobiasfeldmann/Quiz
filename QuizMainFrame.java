@@ -72,7 +72,7 @@ public class QuizMainFrame extends JFrame {
         antwort1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
-                quizfunktionen.gebeRichtigeAntwort(temp, buttonArray,0);
+                quizfunktionen.gebeRichtigeAntwort(temp, buttonArray,0,fragen);
                 anzeigePunkte.setText(quizfunktionen.gebePunkteAus());
             }
         });
@@ -82,7 +82,7 @@ public class QuizMainFrame extends JFrame {
         antwort2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
-                quizfunktionen.gebeRichtigeAntwort(temp, buttonArray,1);
+                quizfunktionen.gebeRichtigeAntwort(temp, buttonArray,1,fragen);
                 anzeigePunkte.setText(quizfunktionen.gebePunkteAus());
             }
         });
@@ -92,7 +92,7 @@ public class QuizMainFrame extends JFrame {
         antwort3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
-                quizfunktionen.gebeRichtigeAntwort(temp, buttonArray,2);
+                quizfunktionen.gebeRichtigeAntwort(temp, buttonArray,2,fragen);
                 anzeigePunkte.setText(quizfunktionen.gebePunkteAus());
             }
         });
@@ -102,7 +102,7 @@ public class QuizMainFrame extends JFrame {
         antwort4.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
-                quizfunktionen.gebeRichtigeAntwort(temp, buttonArray,3);
+                quizfunktionen.gebeRichtigeAntwort(temp, buttonArray,3,fragen);
                 anzeigePunkte.setText(quizfunktionen.gebePunkteAus());
             }
         });
@@ -181,31 +181,7 @@ public class QuizMainFrame extends JFrame {
         eineAntwortRausnehmen1Button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
-                String stringTemp = quizfunktionen.entferneEineLoesung(temp, antwort1.getText(), antwort2.getText(), antwort3.getText(), antwort4.getText());
-                if(stringTemp.equals(antwort1.getText())){
-                    if(antwort2.getText().equals("")){
-                        antwort3.setText("");
-                    }
-                    antwort2.setText("");
-                }
-                else if(stringTemp.equals(antwort2.getText())){
-                    if(antwort4.getText().equals("")){
-                        antwort3.setText("");
-                    }
-                    antwort4.setText("");
-                }
-                else if(stringTemp.equals(antwort3.getText())){
-                    if(antwort3.getText().equals("")){
-                        antwort2.setText("");
-                    }
-                    antwort1.setText("");
-                }
-                else if(stringTemp.equals(antwort4.getText())){
-                    if(antwort1.getText().equals("")){
-                        antwort2.setText("");
-                    }
-                    antwort3.setText("");
-                }
+                quizfunktionen.entferneEineLoesung(temp,buttonArray);
                 eineAntwortRausnehmen1Button.setEnabled(false);
             }
         });
@@ -215,32 +191,7 @@ public class QuizMainFrame extends JFrame {
         eineAntwortRausnehmen2Button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
-                String stringTemp = quizfunktionen.entferneEineLoesung(temp, antwort1.getText(), antwort2.getText(), antwort3.getText(), antwort4.getText());
-                System.out.println(stringTemp);
-                if(stringTemp.equals(antwort1.getText())){
-                    if(antwort2.getText().equals("")){
-                        antwort3.setText("");
-                    }
-                    antwort2.setText("");
-                }
-                else if(stringTemp.equals(antwort2.getText())){
-                    if(antwort4.getText().equals("")){
-                        antwort3.setText("");
-                    }
-                    antwort4.setText("");
-                }
-                else if(stringTemp.equals(antwort3.getText())){
-                    if(antwort3.getText().equals("")){
-                        antwort2.setText("");
-                    }
-                    antwort1.setText("");
-                }
-                else if(stringTemp.equals(antwort4.getText())){
-                    if(antwort1.getText().equals("")){
-                        antwort2.setText("");
-                    }
-                    antwort3.setText("");
-                }
+                quizfunktionen.entferneEineLoesung(temp, buttonArray);
                 eineAntwortRausnehmen2Button.setEnabled(false); 
             }
         });
@@ -292,16 +243,10 @@ public class QuizMainFrame extends JFrame {
         naechsteFrage.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
+                quizfunktionen.setzeButtonFarbeZurueck(buttonArray, buttonColor);
                 temp = quizfunktionen.zufaelligeFrageNummerAusgeben(fragen);
                 anzeigeFrage.setText(fragen.gebeFrageAus(temp));
-                antwort1.setText(fragen.gebeAntwortenAus(temp)[0]);
-                antwort2.setText(fragen.gebeAntwortenAus(temp)[1]);
-                antwort3.setText(fragen.gebeAntwortenAus(temp)[2]);
-                antwort4.setText(fragen.gebeAntwortenAus(temp)[3]);
-                antwort1.setBackground(buttonColor);
-                antwort4.setBackground(buttonColor);
-                antwort3.setBackground(buttonColor);
-                antwort2.setBackground(buttonColor);
+                fragen.gebeAntwortenAus(temp, buttonArray);
                 falscheAntwort = false;
             }
         });
@@ -313,10 +258,7 @@ public class QuizMainFrame extends JFrame {
             public void actionPerformed(ActionEvent e){
                 temp = quizfunktionen.zufaelligeFrageNummerAusgeben(fragen);
                 anzeigeFrage.setText(fragen.gebeFrageAus(temp));
-                antwort1.setText(fragen.gebeAntwortenAus(temp)[0]);
-                antwort2.setText(fragen.gebeAntwortenAus(temp)[1]);
-                antwort3.setText(fragen.gebeAntwortenAus(temp)[2]);
-                antwort4.setText(fragen.gebeAntwortenAus(temp)[3]);
+                fragen.gebeAntwortenAus(temp, buttonArray);
             }
         });
         //                                                                                                                                                      *****ButtonPanelSouth
