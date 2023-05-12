@@ -4,6 +4,5 @@ public class QuizanwendungMain {
         Fragen fragen = new Fragen();
         QuizMainFrame main = new QuizMainFrame();
         main.initialize(fragen, quizfunktionen);
-        fragen.gebeFrageAus(quizfunktionen.zufaelligeFrageNummerAusgeben());
     }
 }

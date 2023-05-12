@@ -8,7 +8,13 @@ public class MarvelFragen {
         "Audi","Mercedes","Koenigsegg", "Lamborghini",
         "Brüssel","Berlin","Friedeburg","Budapest",
         "Mary-Jane", "Antonia","Cassie", "Jessica",
-        "14.000.605","293.421","420","11.088.205"
+        "14.000.605","293.421","420","11.088.205",
+        "Monaco", "Madrid", "Lyon","Belgrad",
+        "unvermeidbar","untötbar","unverzeihlich","unabdingbar",
+        "Im Auge von Agamotto","Im Zahn von Ireldor","Im Tresor von Wakanda","In der Knieprothese der Ältesten",
+        "bisschen trocken","zu nussig","ekelhaft","zu süß",
+        "Palladium-Vergiftung","Diarrhoe","Rheuma","Folgen eines Herzinfarkts",
+        "6","5","7","8"
 
     };
 
@@ -20,7 +26,13 @@ public class MarvelFragen {
         "Audi",
         "Budapest",
         "Cassie",
-        "14.000.605"
+        "14.000.605",
+        "Monaco",
+        "unvermeidbar",
+        "Auge von Agamoto",
+        "bisschen trocken",
+        "Palladium-Vergiftung",
+        "6"
     };
 
     static String[] fragen = {
@@ -31,7 +43,13 @@ public class MarvelFragen {
         "Welche Automarke fährt Toni Stark in den Iron Man und Avengers Filmen?",
         "In welcher Stadt fand die gemeinsame Mission von Hawkeye und Black Widow statt?",
         "Wie lautet der Name von Ant Mans Tochter?",
-        "Wieviele mögliche Zukunftsvariationen sieht Dr. Strange in Infinity War?"
+        "Wieviele mögliche Zukunftsvariationen sieht Dr. Strange in Infinity War?",
+        "Wo fand das Rennen in Iron Man 2 statt?",
+        "Vervollständige dieses Zitat von Thanos: 'Ich bin...' ",
+        "Wo wird der Zeitstein vor Infinity War verwahrt?",
+        "Wie findet Dr. Strange die nach Tony Stark benannte Eissorte?",
+        "An welcher Krankheit leidet Tony Stark zu Beginn von Iron Man 2?",
+        "Wieviele Infinity Steine gibt es im MCU?"
     };
     
 }

@@ -1,16 +1,19 @@
 import java.util.Random;
+import javax.swing.JOptionPane;
 
 public class Quizfunktionen {
     int streakCounter = 0;
     int punkte = 0;
 
-    Fragen fragen = new Fragen();
     Random random = new Random();
 
-    public int zufaelligeFrageNummerAusgeben(){
+    public int zufaelligeFrageNummerAusgeben(Fragen fragen){
         int frageNummer = random.nextInt(MarvelFragen.fragen.length);
-        while(fragen.istBereitsBeantwortet(frageNummer)){
+        while(fragen.istBereitsBeantwortet(frageNummer) && !fragen.erledigteFragenKategorieMarvel.isEmpty()){
             frageNummer = random.nextInt(MarvelFragen.fragen.length);
+            if(!fragen.istBereitsBeantwortet(frageNummer) && fragen.erledigteFragenKategorieMarvel.isEmpty()){
+                break;
+            }
         }
         return frageNummer;
     }
@@ -71,5 +74,9 @@ public class Quizfunktionen {
 
     public String gebePunkteAus(){
         return Integer.toString(punkte);
+    }
+
+    public static void popUpAlleFragenBeantwortet(){
+        JOptionPane.showMessageDialog(null, "Alle Fragen beantwortet!", "Glückwunsch!", JOptionPane.INFORMATION_MESSAGE);
     }
 }

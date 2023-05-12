@@ -24,7 +24,12 @@ public class Fragen {
     }
 
     public boolean istBereitsBeantwortet(int i){
-        if(erledigteFragenKategorieMarvel.contains(i)){
+        Integer iT = Integer.parseInt(Integer.toString(i));
+        if(erledigteFragenKategorieMarvel.size() == MarvelFragen.fragen.length){
+            Quizfunktionen.popUpAlleFragenBeantwortet();
+            return false;
+        }
+        else if(erledigteFragenKategorieMarvel.contains(iT)){
             return true;
         }
         else{
@@ -39,5 +44,9 @@ public class Fragen {
         else{
             return false;
         }
+    }
+
+    public void frageErledigt(int i){
+        erledigteFragenKategorieMarvel.add(i);
     }
 }

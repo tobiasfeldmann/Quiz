@@ -75,12 +75,6 @@ public class QuizMainFrame extends JFrame {
                 quizfunktionen.verteiltPunkte(fragen.vergleichtAnwortUndFrage(antwort1.getText()));
                 anzeigePunkte.setText(quizfunktionen.gebePunkteAus());
                 if(anzeigePunkte.getText().equals(tempString) || anzeigePunkte.getText().equals("0")){
-                    falscheAntwort = true;
-                }
-                else{
-                    antwort1.setBackground(new Color(0,255,0));
-                }
-                if(falscheAntwort){
                     String stringTemp = quizfunktionen.gebeRichtigeAntwort(temp, antwort1.getText(), antwort2.getText(), antwort3.getText(), antwort4.getText());
                     switch(stringTemp){
                         case "Antwort 1":
@@ -112,6 +106,10 @@ public class QuizMainFrame extends JFrame {
                             antwort1.setBackground(new Color(255,0,0));
                             break;
                     }
+                }
+                else{
+                    antwort1.setBackground(new Color(0,255,0));
+                    fragen.frageErledigt(temp);
                 }
             }
         });
@@ -125,12 +123,6 @@ public class QuizMainFrame extends JFrame {
                 quizfunktionen.verteiltPunkte(fragen.vergleichtAnwortUndFrage(antwort2.getText()));
                 anzeigePunkte.setText(quizfunktionen.gebePunkteAus());
                 if(anzeigePunkte.getText().equals(tempString) || anzeigePunkte.getText().equals("0")){
-                    falscheAntwort = true;
-                }
-                else{
-                    antwort2.setBackground(new Color(0,255,0));
-                }
-                if(falscheAntwort){
                     String stringTemp = quizfunktionen.gebeRichtigeAntwort(temp, antwort1.getText(), antwort2.getText(), antwort3.getText(), antwort4.getText());
                     switch(stringTemp){
                         case "Antwort 1":
@@ -162,6 +154,10 @@ public class QuizMainFrame extends JFrame {
                             antwort1.setBackground(new Color(255,0,0));
                             break;
                     }
+                }
+                else{
+                    antwort2.setBackground(new Color(0,255,0));
+                    fragen.frageErledigt(temp);
                 }
             }
         });
@@ -175,12 +171,6 @@ public class QuizMainFrame extends JFrame {
                 quizfunktionen.verteiltPunkte(fragen.vergleichtAnwortUndFrage(antwort3.getText()));
                 anzeigePunkte.setText(quizfunktionen.gebePunkteAus());
                 if(anzeigePunkte.getText().equals(tempString) || anzeigePunkte.getText().equals("0")){
-                    falscheAntwort = true;
-                }
-                else{
-                    antwort3.setBackground(new Color(0,255,0));
-                }
-                if(falscheAntwort){
                     String stringTemp = quizfunktionen.gebeRichtigeAntwort(temp, antwort1.getText(), antwort2.getText(), antwort3.getText(), antwort4.getText());
                     switch(stringTemp){
                         case "Antwort 1":
@@ -212,6 +202,10 @@ public class QuizMainFrame extends JFrame {
                             antwort1.setBackground(new Color(255,0,0));
                             break;
                     }
+                }
+                else{
+                    antwort3.setBackground(new Color(0,255,0));
+                    fragen.frageErledigt(temp);
                 }
             }
         });
@@ -225,12 +219,6 @@ public class QuizMainFrame extends JFrame {
                 quizfunktionen.verteiltPunkte(fragen.vergleichtAnwortUndFrage(antwort4.getText()));
                 anzeigePunkte.setText(quizfunktionen.gebePunkteAus());
                 if(anzeigePunkte.getText().equals(tempString) || anzeigePunkte.getText().equals("0")){
-                    falscheAntwort = true;
-                }
-                else{
-                    antwort4.setBackground(new Color(0,255,0));
-                }
-                if(falscheAntwort){
                     String stringTemp = quizfunktionen.gebeRichtigeAntwort(temp, antwort1.getText(), antwort2.getText(), antwort3.getText(), antwort4.getText());
                     switch(stringTemp){
                         case "Antwort 1":
@@ -262,6 +250,10 @@ public class QuizMainFrame extends JFrame {
                             antwort1.setBackground(new Color(255,0,0));
                             break;
                     }
+                }
+                else{
+                    antwort4.setBackground(new Color(0,255,0));
+                    fragen.frageErledigt(temp);
                 }
             }
         });
@@ -340,7 +332,6 @@ public class QuizMainFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e){
                 String stringTemp = quizfunktionen.entferneEineLoesung(temp, antwort1.getText(), antwort2.getText(), antwort3.getText(), antwort4.getText());
-                System.out.println(stringTemp);
                 if(stringTemp.equals(antwort1.getText())){
                     if(antwort2.getText().equals("")){
                         antwort3.setText("");
@@ -451,7 +442,7 @@ public class QuizMainFrame extends JFrame {
         naechsteFrage.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
-                temp = quizfunktionen.zufaelligeFrageNummerAusgeben();
+                temp = quizfunktionen.zufaelligeFrageNummerAusgeben(fragen);
                 anzeigeFrage.setText(fragen.gebeFrageAus(temp));
                 antwort1.setText(fragen.gebeAntwortenAus(temp)[0]);
                 antwort2.setText(fragen.gebeAntwortenAus(temp)[1]);
@@ -470,7 +461,7 @@ public class QuizMainFrame extends JFrame {
         startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
-                temp = quizfunktionen.zufaelligeFrageNummerAusgeben();
+                temp = quizfunktionen.zufaelligeFrageNummerAusgeben(fragen);
                 anzeigeFrage.setText(fragen.gebeFrageAus(temp));
                 antwort1.setText(fragen.gebeAntwortenAus(temp)[0]);
                 antwort2.setText(fragen.gebeAntwortenAus(temp)[1]);
