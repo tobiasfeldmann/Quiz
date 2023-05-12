@@ -37,15 +37,6 @@ public class Fragen {
         }
     }
 
-    public boolean vergleichtAnwortUndFrage(String antwort){
-        if(antwort.equals(richtigeAntwort)){
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
-
     public void frageErledigt(int i){
         erledigteFragenKategorieMarvel.add(i);
     }

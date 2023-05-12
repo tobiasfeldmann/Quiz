@@ -1,5 +1,7 @@
 import java.util.Random;
-import javax.swing.JOptionPane;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
 
 public class Quizfunktionen {
     int streakCounter = 0;
@@ -34,21 +36,23 @@ public class Quizfunktionen {
         }
     }
 
-    public String gebeRichtigeAntwort(int i, String antwort1, String antwort2, String antwort3, String antwort4){
+    public void gebeRichtigeAntwort(int i, JButton[] buttonArray, int buttonIndex){
+        int richtigerButtonIndex = -1;
         String richtigeAntwort = MarvelFragen.richtigeAntwort[i];
-        if(richtigeAntwort.equals(antwort1)){
-            return "Antwort 1";
+        for(int i1 = 0; i1 < buttonArray.length; i1++){
+            if(buttonArray[i1].getText().equals(richtigeAntwort)){
+                richtigerButtonIndex = i1;
+                buttonArray[i1].setBackground(Color.green);
+            }
+            else{
+                buttonArray[i1].setBackground(Color.red);
+            }
         }
-        else if(richtigeAntwort.equals(antwort2)){
-            return "Antwort 2";
-        }
-        else if(richtigeAntwort.equals(antwort3)){
-            return "Antwort 3";
-        }
-        else{
-            return "Antwort 4";
+        if(richtigerButtonIndex == buttonIndex){
+            punkte++;
         }
     }
+
     //Gibt richtige Lösung zurück, wird deswegen auch für die farbliche Kennzeichung bei falscher/richtiger Antwort verwendet
     public String entferneEineLoesung(int i, String antwort1, String antwort2, String antwort3, String antwort4){
         String richtigeAntwort = MarvelFragen.richtigeAntwort[i];
@@ -63,12 +67,6 @@ public class Quizfunktionen {
         }
         else{
             return antwort4;
-        }
-    }
-
-    public void verteiltPunkte(boolean b){
-        if(b){
-            punkte++;
         }
     }
 

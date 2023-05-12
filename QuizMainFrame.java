@@ -10,6 +10,7 @@ public class QuizMainFrame extends JFrame {
     int temp;
     Color buttonColor;
     boolean falscheAntwort = false;
+    JButton[] buttonArray;
 
     public void initialize(Fragen fragen, Quizfunktionen quizfunktionen){
 
@@ -64,53 +65,15 @@ public class QuizMainFrame extends JFrame {
         //Anzeige Antwortmöglichkeiten                                                                                                                           ***** Anzeige der Frage
         anzeigeFrage = new JLabel("Frage", 0);
         anzeigeFrage.setFont(centerFont);
-
+        
         //Buttons für die Beantwortung der Fragen                                                                                                                *****Antwortbuttons 1 - 4
         antwort1 = new JButton("Antwort 1");
         antwort1.setFont(centerFont);
         antwort1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
-                String tempString = anzeigePunkte.getText();
-                quizfunktionen.verteiltPunkte(fragen.vergleichtAnwortUndFrage(antwort1.getText()));
+                quizfunktionen.gebeRichtigeAntwort(temp, buttonArray,0);
                 anzeigePunkte.setText(quizfunktionen.gebePunkteAus());
-                if(anzeigePunkte.getText().equals(tempString) || anzeigePunkte.getText().equals("0")){
-                    String stringTemp = quizfunktionen.gebeRichtigeAntwort(temp, antwort1.getText(), antwort2.getText(), antwort3.getText(), antwort4.getText());
-                    switch(stringTemp){
-                        case "Antwort 1":
-                            antwort1.setBackground(new Color(0,255,0));
-
-                            antwort2.setBackground(new Color(255,0,0));
-                            antwort3.setBackground(new Color(255,0,0));
-                            antwort4.setBackground(new Color(255,0,0));
-                            break;
-                        case "Antwort 2":
-                            antwort2.setBackground(new Color(0,255,0));
-
-                            antwort1.setBackground(new Color(255,0,0));
-                            antwort3.setBackground(new Color(255,0,0));
-                            antwort4.setBackground(new Color(255,0,0));
-                            break;
-                        case "Antwort 3":
-                            antwort3.setBackground(new Color(0,255,0));
-
-                            antwort2.setBackground(new Color(255,0,0));
-                            antwort1.setBackground(new Color(255,0,0));
-                            antwort4.setBackground(new Color(255,0,0));
-                            break;
-                        case "Antwort 4":
-                            antwort4.setBackground(new Color(0,255,0));
-
-                            antwort2.setBackground(new Color(255,0,0));
-                            antwort3.setBackground(new Color(255,0,0));
-                            antwort1.setBackground(new Color(255,0,0));
-                            break;
-                    }
-                }
-                else{
-                    antwort1.setBackground(new Color(0,255,0));
-                    fragen.frageErledigt(temp);
-                }
             }
         });
 
@@ -119,46 +82,8 @@ public class QuizMainFrame extends JFrame {
         antwort2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
-                String tempString = anzeigePunkte.getText();
-                quizfunktionen.verteiltPunkte(fragen.vergleichtAnwortUndFrage(antwort2.getText()));
+                quizfunktionen.gebeRichtigeAntwort(temp, buttonArray,1);
                 anzeigePunkte.setText(quizfunktionen.gebePunkteAus());
-                if(anzeigePunkte.getText().equals(tempString) || anzeigePunkte.getText().equals("0")){
-                    String stringTemp = quizfunktionen.gebeRichtigeAntwort(temp, antwort1.getText(), antwort2.getText(), antwort3.getText(), antwort4.getText());
-                    switch(stringTemp){
-                        case "Antwort 1":
-                            antwort1.setBackground(new Color(0,255,0));
-
-                            antwort2.setBackground(new Color(255,0,0));
-                            antwort3.setBackground(new Color(255,0,0));
-                            antwort4.setBackground(new Color(255,0,0));
-                            break;
-                        case "Antwort 2":
-                            antwort2.setBackground(new Color(0,255,0));
-
-                            antwort1.setBackground(new Color(255,0,0));
-                            antwort3.setBackground(new Color(255,0,0));
-                            antwort4.setBackground(new Color(255,0,0));
-                            break;
-                        case "Antwort 3":
-                            antwort3.setBackground(new Color(0,255,0));
-
-                            antwort2.setBackground(new Color(255,0,0));
-                            antwort1.setBackground(new Color(255,0,0));
-                            antwort4.setBackground(new Color(255,0,0));
-                            break;
-                        case "Antwort 4":
-                            antwort4.setBackground(new Color(0,255,0));
-
-                            antwort2.setBackground(new Color(255,0,0));
-                            antwort3.setBackground(new Color(255,0,0));
-                            antwort1.setBackground(new Color(255,0,0));
-                            break;
-                    }
-                }
-                else{
-                    antwort2.setBackground(new Color(0,255,0));
-                    fragen.frageErledigt(temp);
-                }
             }
         });
 
@@ -167,46 +92,8 @@ public class QuizMainFrame extends JFrame {
         antwort3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
-                String tempString = anzeigePunkte.getText();
-                quizfunktionen.verteiltPunkte(fragen.vergleichtAnwortUndFrage(antwort3.getText()));
+                quizfunktionen.gebeRichtigeAntwort(temp, buttonArray,2);
                 anzeigePunkte.setText(quizfunktionen.gebePunkteAus());
-                if(anzeigePunkte.getText().equals(tempString) || anzeigePunkte.getText().equals("0")){
-                    String stringTemp = quizfunktionen.gebeRichtigeAntwort(temp, antwort1.getText(), antwort2.getText(), antwort3.getText(), antwort4.getText());
-                    switch(stringTemp){
-                        case "Antwort 1":
-                            antwort1.setBackground(new Color(0,255,0));
-
-                            antwort2.setBackground(new Color(255,0,0));
-                            antwort3.setBackground(new Color(255,0,0));
-                            antwort4.setBackground(new Color(255,0,0));
-                            break;
-                        case "Antwort 2":
-                            antwort2.setBackground(new Color(0,255,0));
-
-                            antwort1.setBackground(new Color(255,0,0));
-                            antwort3.setBackground(new Color(255,0,0));
-                            antwort4.setBackground(new Color(255,0,0));
-                            break;
-                        case "Antwort 3":
-                            antwort3.setBackground(new Color(0,255,0));
-
-                            antwort2.setBackground(new Color(255,0,0));
-                            antwort1.setBackground(new Color(255,0,0));
-                            antwort4.setBackground(new Color(255,0,0));
-                            break;
-                        case "Antwort 4":
-                            antwort4.setBackground(new Color(0,255,0));
-
-                            antwort2.setBackground(new Color(255,0,0));
-                            antwort3.setBackground(new Color(255,0,0));
-                            antwort1.setBackground(new Color(255,0,0));
-                            break;
-                    }
-                }
-                else{
-                    antwort3.setBackground(new Color(0,255,0));
-                    fragen.frageErledigt(temp);
-                }
             }
         });
 
@@ -215,49 +102,12 @@ public class QuizMainFrame extends JFrame {
         antwort4.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
-                String tempString = anzeigePunkte.getText();
-                quizfunktionen.verteiltPunkte(fragen.vergleichtAnwortUndFrage(antwort4.getText()));
+                quizfunktionen.gebeRichtigeAntwort(temp, buttonArray,3);
                 anzeigePunkte.setText(quizfunktionen.gebePunkteAus());
-                if(anzeigePunkte.getText().equals(tempString) || anzeigePunkte.getText().equals("0")){
-                    String stringTemp = quizfunktionen.gebeRichtigeAntwort(temp, antwort1.getText(), antwort2.getText(), antwort3.getText(), antwort4.getText());
-                    switch(stringTemp){
-                        case "Antwort 1":
-                            antwort1.setBackground(new Color(0,255,0));
-
-                            antwort2.setBackground(new Color(255,0,0));
-                            antwort3.setBackground(new Color(255,0,0));
-                            antwort4.setBackground(new Color(255,0,0));
-                            break;
-                        case "Antwort 2":
-                            antwort2.setBackground(new Color(0,255,0));
-
-                            antwort1.setBackground(new Color(255,0,0));
-                            antwort3.setBackground(new Color(255,0,0));
-                            antwort4.setBackground(new Color(255,0,0));
-                            break;
-                        case "Antwort 3":
-                            antwort3.setBackground(new Color(0,255,0));
-
-                            antwort2.setBackground(new Color(255,0,0));
-                            antwort1.setBackground(new Color(255,0,0));
-                            antwort4.setBackground(new Color(255,0,0));
-                            break;
-                        case "Antwort 4":
-                            antwort4.setBackground(new Color(0,255,0));
-
-                            antwort2.setBackground(new Color(255,0,0));
-                            antwort3.setBackground(new Color(255,0,0));
-                            antwort1.setBackground(new Color(255,0,0));
-                            break;
-                    }
-                }
-                else{
-                    antwort4.setBackground(new Color(0,255,0));
-                    fragen.frageErledigt(temp);
-                }
             }
         });
 
+        buttonArray = new JButton[] {antwort1, antwort2, antwort3, antwort4};
         //AntwortPanel der Antwort Buttons                                                                                                                      *****Antwort Button Panel
         JPanel antwortButtonPanel = new JPanel();
 
