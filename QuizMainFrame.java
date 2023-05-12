@@ -8,6 +8,8 @@ public class QuizMainFrame extends JFrame {
     JButton antwort1, antwort2, antwort3, antwort4, kategorieMarvel, kategorieOstfriesland, naechsteFrage, startButton, fiftyfiftyJoker1Button, fiftyfiftyJoker2Button, loesungsButton, eineAntwortRausnehmen1Button, eineAntwortRausnehmen2Button;
     JLabel anzeigeFrage, anzeigePunkte, anzeigeStreak, anzeigeKategorie;
     int temp;
+    Color buttonColor;
+    boolean falscheAntwort = false;
 
     public void initialize(Fragen fragen, Quizfunktionen quizfunktionen){
 
@@ -57,7 +59,7 @@ public class QuizMainFrame extends JFrame {
         kategorienPanel.add(kategorieMarvel);
         kategorienPanel.add(kategorieOstfriesland);
 
-
+        buttonColor = kategorieOstfriesland.getBackground();
 
         //Anzeige Antwortmöglichkeiten                                                                                                                           ***** Anzeige der Frage
         anzeigeFrage = new JLabel("Frage", 0);
@@ -69,8 +71,48 @@ public class QuizMainFrame extends JFrame {
         antwort1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
+                String tempString = anzeigePunkte.getText();
                 quizfunktionen.verteiltPunkte(fragen.vergleichtAnwortUndFrage(antwort1.getText()));
                 anzeigePunkte.setText(quizfunktionen.gebePunkteAus());
+                if(anzeigePunkte.getText().equals(tempString) || anzeigePunkte.getText().equals("0")){
+                    falscheAntwort = true;
+                }
+                else{
+                    antwort1.setBackground(new Color(0,255,0));
+                }
+                if(falscheAntwort){
+                    String stringTemp = quizfunktionen.gebeRichtigeAntwort(temp, antwort1.getText(), antwort2.getText(), antwort3.getText(), antwort4.getText());
+                    switch(stringTemp){
+                        case "Antwort 1":
+                            antwort1.setBackground(new Color(0,255,0));
+
+                            antwort2.setBackground(new Color(255,0,0));
+                            antwort3.setBackground(new Color(255,0,0));
+                            antwort4.setBackground(new Color(255,0,0));
+                            break;
+                        case "Antwort 2":
+                            antwort2.setBackground(new Color(0,255,0));
+
+                            antwort1.setBackground(new Color(255,0,0));
+                            antwort3.setBackground(new Color(255,0,0));
+                            antwort4.setBackground(new Color(255,0,0));
+                            break;
+                        case "Antwort 3":
+                            antwort3.setBackground(new Color(0,255,0));
+
+                            antwort2.setBackground(new Color(255,0,0));
+                            antwort1.setBackground(new Color(255,0,0));
+                            antwort4.setBackground(new Color(255,0,0));
+                            break;
+                        case "Antwort 4":
+                            antwort4.setBackground(new Color(0,255,0));
+
+                            antwort2.setBackground(new Color(255,0,0));
+                            antwort3.setBackground(new Color(255,0,0));
+                            antwort1.setBackground(new Color(255,0,0));
+                            break;
+                    }
+                }
             }
         });
 
@@ -79,9 +121,48 @@ public class QuizMainFrame extends JFrame {
         antwort2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
+                String tempString = anzeigePunkte.getText();
                 quizfunktionen.verteiltPunkte(fragen.vergleichtAnwortUndFrage(antwort2.getText()));
                 anzeigePunkte.setText(quizfunktionen.gebePunkteAus());
-                antwort2.setBackground(new Color(128, 128, 255));
+                if(anzeigePunkte.getText().equals(tempString) || anzeigePunkte.getText().equals("0")){
+                    falscheAntwort = true;
+                }
+                else{
+                    antwort2.setBackground(new Color(0,255,0));
+                }
+                if(falscheAntwort){
+                    String stringTemp = quizfunktionen.gebeRichtigeAntwort(temp, antwort1.getText(), antwort2.getText(), antwort3.getText(), antwort4.getText());
+                    switch(stringTemp){
+                        case "Antwort 1":
+                            antwort1.setBackground(new Color(0,255,0));
+
+                            antwort2.setBackground(new Color(255,0,0));
+                            antwort3.setBackground(new Color(255,0,0));
+                            antwort4.setBackground(new Color(255,0,0));
+                            break;
+                        case "Antwort 2":
+                            antwort2.setBackground(new Color(0,255,0));
+
+                            antwort1.setBackground(new Color(255,0,0));
+                            antwort3.setBackground(new Color(255,0,0));
+                            antwort4.setBackground(new Color(255,0,0));
+                            break;
+                        case "Antwort 3":
+                            antwort3.setBackground(new Color(0,255,0));
+
+                            antwort2.setBackground(new Color(255,0,0));
+                            antwort1.setBackground(new Color(255,0,0));
+                            antwort4.setBackground(new Color(255,0,0));
+                            break;
+                        case "Antwort 4":
+                            antwort4.setBackground(new Color(0,255,0));
+
+                            antwort2.setBackground(new Color(255,0,0));
+                            antwort3.setBackground(new Color(255,0,0));
+                            antwort1.setBackground(new Color(255,0,0));
+                            break;
+                    }
+                }
             }
         });
 
@@ -90,8 +171,48 @@ public class QuizMainFrame extends JFrame {
         antwort3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
+                String tempString = anzeigePunkte.getText();
                 quizfunktionen.verteiltPunkte(fragen.vergleichtAnwortUndFrage(antwort3.getText()));
                 anzeigePunkte.setText(quizfunktionen.gebePunkteAus());
+                if(anzeigePunkte.getText().equals(tempString) || anzeigePunkte.getText().equals("0")){
+                    falscheAntwort = true;
+                }
+                else{
+                    antwort3.setBackground(new Color(0,255,0));
+                }
+                if(falscheAntwort){
+                    String stringTemp = quizfunktionen.gebeRichtigeAntwort(temp, antwort1.getText(), antwort2.getText(), antwort3.getText(), antwort4.getText());
+                    switch(stringTemp){
+                        case "Antwort 1":
+                            antwort1.setBackground(new Color(0,255,0));
+
+                            antwort2.setBackground(new Color(255,0,0));
+                            antwort3.setBackground(new Color(255,0,0));
+                            antwort4.setBackground(new Color(255,0,0));
+                            break;
+                        case "Antwort 2":
+                            antwort2.setBackground(new Color(0,255,0));
+
+                            antwort1.setBackground(new Color(255,0,0));
+                            antwort3.setBackground(new Color(255,0,0));
+                            antwort4.setBackground(new Color(255,0,0));
+                            break;
+                        case "Antwort 3":
+                            antwort3.setBackground(new Color(0,255,0));
+
+                            antwort2.setBackground(new Color(255,0,0));
+                            antwort1.setBackground(new Color(255,0,0));
+                            antwort4.setBackground(new Color(255,0,0));
+                            break;
+                        case "Antwort 4":
+                            antwort4.setBackground(new Color(0,255,0));
+
+                            antwort2.setBackground(new Color(255,0,0));
+                            antwort3.setBackground(new Color(255,0,0));
+                            antwort1.setBackground(new Color(255,0,0));
+                            break;
+                    }
+                }
             }
         });
 
@@ -100,12 +221,48 @@ public class QuizMainFrame extends JFrame {
         antwort4.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
+                String tempString = anzeigePunkte.getText();
                 quizfunktionen.verteiltPunkte(fragen.vergleichtAnwortUndFrage(antwort4.getText()));
-                /*if(Integer.parseInt(quizfunktionen.gebePunkteAus()) > Integer.parseInt(anzeigePunkte.getText())){
-                    antwort4.setBackground(new Color(255,0,0));
-
-                }*/
                 anzeigePunkte.setText(quizfunktionen.gebePunkteAus());
+                if(anzeigePunkte.getText().equals(tempString) || anzeigePunkte.getText().equals("0")){
+                    falscheAntwort = true;
+                }
+                else{
+                    antwort4.setBackground(new Color(0,255,0));
+                }
+                if(falscheAntwort){
+                    String stringTemp = quizfunktionen.gebeRichtigeAntwort(temp, antwort1.getText(), antwort2.getText(), antwort3.getText(), antwort4.getText());
+                    switch(stringTemp){
+                        case "Antwort 1":
+                            antwort1.setBackground(new Color(0,255,0));
+
+                            antwort2.setBackground(new Color(255,0,0));
+                            antwort3.setBackground(new Color(255,0,0));
+                            antwort4.setBackground(new Color(255,0,0));
+                            break;
+                        case "Antwort 2":
+                            antwort2.setBackground(new Color(0,255,0));
+
+                            antwort1.setBackground(new Color(255,0,0));
+                            antwort3.setBackground(new Color(255,0,0));
+                            antwort4.setBackground(new Color(255,0,0));
+                            break;
+                        case "Antwort 3":
+                            antwort3.setBackground(new Color(0,255,0));
+
+                            antwort2.setBackground(new Color(255,0,0));
+                            antwort1.setBackground(new Color(255,0,0));
+                            antwort4.setBackground(new Color(255,0,0));
+                            break;
+                        case "Antwort 4":
+                            antwort4.setBackground(new Color(0,255,0));
+
+                            antwort2.setBackground(new Color(255,0,0));
+                            antwort3.setBackground(new Color(255,0,0));
+                            antwort1.setBackground(new Color(255,0,0));
+                            break;
+                    }
+                }
             }
         });
 
@@ -253,7 +410,6 @@ public class QuizMainFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e){
                 String stringTemp = quizfunktionen.deckeLoesungAuf(temp, antwort1.getText(), antwort2.getText(), antwort3.getText(), antwort4.getText());
-                System.out.println(stringTemp);
                 if(stringTemp.equals(antwort1.getText())){
                     antwort2.setText("");
                     antwort3.setText("");
@@ -301,6 +457,11 @@ public class QuizMainFrame extends JFrame {
                 antwort2.setText(fragen.gebeAntwortenAus(temp)[1]);
                 antwort3.setText(fragen.gebeAntwortenAus(temp)[2]);
                 antwort4.setText(fragen.gebeAntwortenAus(temp)[3]);
+                antwort1.setBackground(buttonColor);
+                antwort4.setBackground(buttonColor);
+                antwort3.setBackground(buttonColor);
+                antwort2.setBackground(buttonColor);
+                falscheAntwort = false;
             }
         });
         //                                                                                                                                                      ****StartButton

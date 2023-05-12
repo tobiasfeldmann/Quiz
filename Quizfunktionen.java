@@ -30,6 +30,22 @@ public class Quizfunktionen {
             return antwort4;
         }
     }
+
+    public String gebeRichtigeAntwort(int i, String antwort1, String antwort2, String antwort3, String antwort4){
+        String richtigeAntwort = MarvelFragen.richtigeAntwort[i];
+        if(richtigeAntwort.equals(antwort1)){
+            return "Antwort 1";
+        }
+        else if(richtigeAntwort.equals(antwort2)){
+            return "Antwort 2";
+        }
+        else if(richtigeAntwort.equals(antwort3)){
+            return "Antwort 3";
+        }
+        else{
+            return "Antwort 4";
+        }
+    }
     //Gibt richtige Lösung zurück, wird deswegen auch für die farbliche Kennzeichung bei falscher/richtiger Antwort verwendet
     public String entferneEineLoesung(int i, String antwort1, String antwort2, String antwort3, String antwort4){
         String richtigeAntwort = MarvelFragen.richtigeAntwort[i];
