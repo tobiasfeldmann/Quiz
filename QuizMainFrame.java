@@ -11,6 +11,7 @@ public class QuizMainFrame extends JFrame {
     Color buttonColor;
     boolean falscheAntwort = false;
     JButton[] buttonArray;
+    JButton[] buttonsDisablen;
 
     public void initialize(Fragen fragen, Quizfunktionen quizfunktionen){
 
@@ -74,6 +75,7 @@ public class QuizMainFrame extends JFrame {
             public void actionPerformed(ActionEvent e){
                 quizfunktionen.gebeRichtigeAntwort(temp, buttonArray,0,fragen);
                 anzeigePunkte.setText(quizfunktionen.gebePunkteAus());
+                quizfunktionen.gebeStreakcounterAus(anzeigeStreak);
             }
         });
 
@@ -84,6 +86,7 @@ public class QuizMainFrame extends JFrame {
             public void actionPerformed(ActionEvent e){
                 quizfunktionen.gebeRichtigeAntwort(temp, buttonArray,1,fragen);
                 anzeigePunkte.setText(quizfunktionen.gebePunkteAus());
+                quizfunktionen.gebeStreakcounterAus(anzeigeStreak);
             }
         });
 
@@ -94,6 +97,7 @@ public class QuizMainFrame extends JFrame {
             public void actionPerformed(ActionEvent e){
                 quizfunktionen.gebeRichtigeAntwort(temp, buttonArray,2,fragen);
                 anzeigePunkte.setText(quizfunktionen.gebePunkteAus());
+                quizfunktionen.gebeStreakcounterAus(anzeigeStreak);
             }
         });
 
@@ -104,6 +108,7 @@ public class QuizMainFrame extends JFrame {
             public void actionPerformed(ActionEvent e){
                 quizfunktionen.gebeRichtigeAntwort(temp, buttonArray,3,fragen);
                 anzeigePunkte.setText(quizfunktionen.gebePunkteAus());
+                quizfunktionen.gebeStreakcounterAus(anzeigeStreak);
             }
         });
 
@@ -172,6 +177,7 @@ public class QuizMainFrame extends JFrame {
             }
         });
 
+        buttonsDisablen = new JButton[]{antwort1, antwort2, antwort3, antwort4, fiftyfiftyJoker1Button, fiftyfiftyJoker2Button,eineAntwortRausnehmen1Button,eineAntwortRausnehmen2Button, loesungsButton, naechsteFrage};
         JPanel jokerButtonPanel = new JPanel();
         jokerButtonPanel.setOpaque(false);
         jokerButtonPanel.setLayout(new GridLayout(5,1,20,20));
@@ -238,6 +244,7 @@ public class QuizMainFrame extends JFrame {
 
 
         add(mainPanel);
+        quizfunktionen.disableAlleButtons(buttonsDisablen);
 
 
         setTitle("Quiz");

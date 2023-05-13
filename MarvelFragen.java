@@ -34,7 +34,7 @@ public class MarvelFragen {
         "bisschen trocken",
         "Palladium-Vergiftung",
         "6",
-        "Even Dead I'm Still The Hero"
+        "Even Dead I'm The Hero"
     };
 
     static String[] fragen = {

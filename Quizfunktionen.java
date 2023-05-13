@@ -61,8 +61,13 @@ public class Quizfunktionen {
             }
         }
         if(richtigerButtonIndex == buttonIndex){
-            punkte++;
             fragen.frageErledigt(i);
+            berechneStreak(true);
+            berechnePunkte();
+        }
+        else{
+            fragen.frageErledigt(i);
+            berechneStreak(false);
         }
     }
 
@@ -119,6 +124,36 @@ public class Quizfunktionen {
         return Integer.toString(punkte);
     }
 
+    public void berechnePunkte(){
+        if(streakCounter != 0){
+            punkte = punkte + 1 + (1 * (streakCounter / 5));
+        }
+        else{
+            punkte++;
+        }
+    }
+
+    /**
+     * fügt dem streakCounter bei richtiger Antwort 1 zu, ansonsten setzt er ihn auf 0
+     * @param b, Boolean des Vergleichs der Antwort mit der richtigen Antwort
+     */
+    public void berechneStreak(Boolean b){
+        if(b){
+            streakCounter++;
+        }
+        else{
+            streakCounter = 0;
+        }
+    }
+
+    /**
+     * setzt den Text des JLabels streakcounter in der Anzeige auf den aktuellen Wert des int streakCounter
+     * @param streakcounter, das JLabel der Anzeige
+     */
+    public void gebeStreakcounterAus(JLabel streakcounter){
+        streakcounter.setText(Integer.toString(streakCounter));
+    }
+
     /**
      * Erzeugt ein PopUp wenn alle Fragen beantwortet sind
      */
@@ -134,6 +169,18 @@ public class Quizfunktionen {
     public void setzeButtonFarbeZurueck(JButton[] buttonArray, Color color){
         for(JButton button: buttonArray){
             button.setBackground(color);
+        }
+    }
+
+    public void startSequenz(JButton[] buttons){
+        for(JButton button: buttons){
+            button.setEnabled(true);
+        }
+    }
+
+    public void disableAlleButtons(JButton[] buttons){
+        for(JButton button: buttons){
+            button.setEnabled(false);
         }
     }
 }
