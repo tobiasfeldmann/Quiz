@@ -14,7 +14,8 @@ public class MarvelFragen {
         "Im Auge von Agamotto","Im Zahn von Ireldor","Im Tresor von Wakanda","In der Knieprothese der Ältesten",
         "zu süß","bisschen trocken","zu nussig","ekelhaft",
         "Palladium-Vergiftung","Diarrhoe","Rheuma","Folgen eines Herzinfarkts",
-        "5","6","7","8"
+        "5","6","7","8",
+        "Eries Dactus Invictus Tangen Harus","Even Dead I'm The Hero","Eden Does Inherit The Home", "Eine Dattel ist tendenziell hochwachsend"
 
     };
 
@@ -32,7 +33,8 @@ public class MarvelFragen {
         "Im Auge von Agamotto",
         "bisschen trocken",
         "Palladium-Vergiftung",
-        "6"
+        "6",
+        "Even Dead I'm Still The Hero"
     };
 
     static String[] fragen = {
@@ -49,7 +51,8 @@ public class MarvelFragen {
         "Wo wird der Zeitstein vor Infinity War verwahrt?",
         "Wie findet Dr. Strange die nach Tony Stark benannte Eissorte?",
         "An welcher Krankheit leidet Tony Stark zu Beginn von Iron Man 2?",
-        "Wieviele Infinity Steine gibt es im MCU?"
+        "Wieviele Infinity Steine gibt es im MCU?",
+        "Wofür steht E.D.I.T.H.?"
     };
     
 }

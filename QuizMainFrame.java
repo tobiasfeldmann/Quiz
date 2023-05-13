@@ -127,24 +127,7 @@ public class QuizMainFrame extends JFrame {
         fiftyfiftyJoker1Button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
-                String stringTemp = quizfunktionen.deckeLoesungAuf(temp, antwort1.getText(), antwort2.getText(), antwort3.getText(), antwort4.getText());
-                System.out.println(stringTemp);
-                if(stringTemp.equals(antwort1.getText())){
-                    antwort2.setText("");
-                    antwort3.setText("");
-                }
-                else if(stringTemp.equals(antwort2.getText())){
-                    antwort1.setText("");
-                    antwort4.setText("");
-                }
-                else if(stringTemp.equals(antwort3.getText())){
-                    antwort1.setText("");
-                    antwort4.setText("");
-                }
-                else if(stringTemp.equals(antwort4.getText())){
-                    antwort2.setText("");
-                    antwort3.setText("");
-                }
+                quizfunktionen.entferneZweiLoesungen(temp, buttonArray);
                 fiftyfiftyJoker1Button.setEnabled(false);
             }
         });
@@ -154,28 +137,11 @@ public class QuizMainFrame extends JFrame {
         fiftyfiftyJoker2Button.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                String stringTemp = quizfunktionen.deckeLoesungAuf(temp, antwort1.getText(), antwort2.getText(), antwort3.getText(), antwort4.getText());
-                System.out.println(stringTemp);
-                if(stringTemp.equals(antwort1.getText())){
-                    antwort2.setText("");
-                    antwort3.setText("");
-                }
-                else if(stringTemp.equals(antwort2.getText())){
-                    antwort1.setText("");
-                    antwort4.setText("");
-                }
-                else if(stringTemp.equals(antwort3.getText())){
-                    antwort1.setText("");
-                    antwort4.setText("");
-                }
-                else if(stringTemp.equals(antwort4.getText())){
-                    antwort2.setText("");
-                    antwort3.setText("");
-                }
+                quizfunktionen.entferneZweiLoesungen(temp, buttonArray);
                 fiftyfiftyJoker2Button.setEnabled(false);
             }
         });
-
+        //Löst Exception aus wenn nur noch eine Lösung vorhanden ist
         eineAntwortRausnehmen1Button = new JButton("Entferne eine mögliche Antwort");
         eineAntwortRausnehmen1Button.setFont(mainFont);
         eineAntwortRausnehmen1Button.addActionListener(new ActionListener() {
@@ -185,7 +151,7 @@ public class QuizMainFrame extends JFrame {
                 eineAntwortRausnehmen1Button.setEnabled(false);
             }
         });
-
+        //Löst Exception aus wenn nur noch eine Lösung vorhanden ist
         eineAntwortRausnehmen2Button = new JButton("Entferne eine mögliche Antwort");
         eineAntwortRausnehmen2Button.setFont(mainFont);
         eineAntwortRausnehmen2Button.addActionListener(new ActionListener() {
@@ -201,27 +167,7 @@ public class QuizMainFrame extends JFrame {
         loesungsButton.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                String stringTemp = quizfunktionen.deckeLoesungAuf(temp, antwort1.getText(), antwort2.getText(), antwort3.getText(), antwort4.getText());
-                if(stringTemp.equals(antwort1.getText())){
-                    antwort2.setText("");
-                    antwort3.setText("");
-                    antwort4.setText("");
-                }
-                else if(stringTemp.equals(antwort2.getText())){
-                    antwort1.setText("");
-                    antwort3.setText("");
-                    antwort4.setText("");
-                }
-                else if(stringTemp.equals(antwort3.getText())){
-                    antwort2.setText("");
-                    antwort1.setText("");
-                    antwort4.setText("");
-                }
-                else if(stringTemp.equals(antwort4.getText())){
-                    antwort2.setText("");
-                    antwort3.setText("");
-                    antwort1.setText("");
-                }
+                quizfunktionen.deckeLoesungAuf(temp, buttonArray);
                 loesungsButton.setEnabled(false);
             }
         });
