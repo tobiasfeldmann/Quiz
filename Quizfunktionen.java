@@ -159,6 +159,7 @@ public class Quizfunktionen {
      */
     public static void popUpAlleFragenBeantwortet(){
         JOptionPane.showMessageDialog(null, "Alle Fragen beantwortet!", "Glückwunsch!", JOptionPane.INFORMATION_MESSAGE);
+        
     }
 
     /**
@@ -172,12 +173,20 @@ public class Quizfunktionen {
         }
     }
 
+    /**
+     * enabled die buttons nachdem Start gedrückt wurde
+     * @param buttons, buttonarray mit zu enablen buttons
+     */
     public void startSequenz(JButton[] buttons){
         for(JButton button: buttons){
             button.setEnabled(true);
         }
     }
 
+    /** 
+     * disabled alle buttons die übergeben wurden
+     * @param buttons, buttonarray mit zu disablen buttons
+     */
     public void disableButtons(JButton[] buttons){
         for(JButton button: buttons){
             button.setEnabled(false);

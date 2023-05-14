@@ -15,7 +15,11 @@ public class QuizMainFrame extends JFrame {
 
     public void initialize(Fragen fragen, Quizfunktionen quizfunktionen){
 
-        //Anzeige der Punkte + longest Streak                                                                                                               *****Punktetafel Anzeige  
+        //Anzeige der Punkte + longest Streak                                                                                                           *****Punktetafel Anzeige  
+        /**
+         * Anzeige der erzielten Punkte und der längsten Serie an richtigen Antworten sowie der Kategorie
+         *  
+         * */                                                                                                             
         anzeigePunkte = new JLabel("Punkte",0);
         anzeigePunkte.setFont(mainFont);
 
@@ -26,6 +30,9 @@ public class QuizMainFrame extends JFrame {
         anzeigeKategorie.setFont(mainFont);
 
         //Panel der Punktetafel                                                                                                                             ****Punktetafel Panel
+        /**
+         * Panel für die Punk-, Kategorie sowie Streakanzeige
+         */
         JPanel punktePanel = new JPanel();
         punktePanel.setLayout(new GridLayout(3,1,60,160));
         punktePanel.setOpaque(false);
@@ -36,6 +43,9 @@ public class QuizMainFrame extends JFrame {
 
 
         //Anzeige der Kategorie bzw. buttons um hin und her zu wechseln                                                                                     ****Buttons fuer die Kategorien
+        /**
+         * Button um die Kategorie Marvel zu wählen -> derzeit ohne Funktion
+         */
         kategorieMarvel = new JButton("     Marvel   ");
         kategorieMarvel.setFont(mainFont);
         kategorieMarvel.addActionListener(new ActionListener() {
@@ -55,6 +65,9 @@ public class QuizMainFrame extends JFrame {
         });
 
         //Panel für die KategorieButtons                                                                                                                       *****Kategorie Panel
+        /**
+         * Panel für die Buttons zum wählen der Kategorie
+         */
         JPanel kategorienPanel = new JPanel();
         kategorienPanel.setLayout(new GridLayout(1,2,5,50));
         kategorienPanel.setOpaque(false);
@@ -64,18 +77,27 @@ public class QuizMainFrame extends JFrame {
         buttonColor = kategorieOstfriesland.getBackground();
 
         //Anzeige Antwortmöglichkeiten                                                                                                                           ***** Anzeige der Frage
+        /**
+         * Anzeige der aktuellen Frage
+         */
         anzeigeFrage = new JLabel("Frage", 0);
         anzeigeFrage.setFont(centerFont);
         
         //Buttons für die Beantwortung der Fragen                                                                                                                *****Antwortbuttons 1 - 4
+        /**
+         * 4 gleiche Buttons, die die Antwortmöglichkeiten wiedergeben und Methoden zum Vergleichen mit der richtigen Antwort aufrufen
+         */
         antwort1 = new JButton("Antwort 1");
         antwort1.setFont(centerFont);
         antwort1.setEnabled(false);
         antwort1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
+                //vergleicht bei Klick die gegebene Antwort mit der richtigen
                 quizfunktionen.gebeRichtigeAntwort(temp, buttonArray,0,fragen);
+                //aktualisiert die Punkteanzeige
                 anzeigePunkte.setText(quizfunktionen.gebePunkteAus());
+                //aktualisiert die Anzeige der Streaks
                 quizfunktionen.gebeStreakcounterAus(anzeigeStreak);
             }
         });
@@ -116,10 +138,15 @@ public class QuizMainFrame extends JFrame {
             }
         });
 
+        /**
+         * ButtonArray die die Antwortbuttons zusammenfasst. genutzt für methoden die diese buttons bearbeiten
+         */
         buttonArray = new JButton[] {antwort1, antwort2, antwort3, antwort4};
         //AntwortPanel der Antwort Buttons                                                                                                                      *****Antwort Button Panel
+        /**
+         * Panel für die Antwortbuttons und die Anzeige der Frage
+         */
         JPanel antwortButtonPanel = new JPanel();
-
         antwortButtonPanel.setLayout(new GridLayout(5,1,20,20));
         antwortButtonPanel.setOpaque(false);
         antwortButtonPanel.add(anzeigeFrage);
@@ -129,63 +156,100 @@ public class QuizMainFrame extends JFrame {
         antwortButtonPanel.add(antwort4);
 
 
-
         //Joker Panel, Joker Buttons                                                                                                                                        ****Joker Buttons
+        /**
+         * Fifty Fifty Joker, der die verschiedenen Möglichkeiten auf zwei begrenzt
+         */
         fiftyfiftyJoker1Button = new JButton("50/50 Joker");
         fiftyfiftyJoker1Button.setFont(mainFont);
         fiftyfiftyJoker1Button.setEnabled(false);
         fiftyfiftyJoker1Button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
+                /**
+                 * Diese Methode entfernt zwei mögliche, falsche Lösungen
+                 * @param temp, index der aktuellen Frage sowie ButtonArray mit den AntwortButtons
+                 * */
                 quizfunktionen.entferneZweiLoesungen(temp, buttonArray);
                 fiftyfiftyJoker1Button.setEnabled(false);
             }
         });
 
+        /**
+         * Fifty Fifty Joker, der die verschiedenen Möglichkeiten auf zwei begrenzt
+         */
         fiftyfiftyJoker2Button = new JButton("50/50 Joker");
         fiftyfiftyJoker2Button.setFont(mainFont);
         fiftyfiftyJoker2Button.setEnabled(false);
         fiftyfiftyJoker2Button.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
+                /**
+                 * Diese Methode entfernt zwei mögliche, falsche Lösungen
+                 * @param temp, index der aktuellen Frage sowie ButtonArray mit den AntwortButtons
+                 * */
                 quizfunktionen.entferneZweiLoesungen(temp, buttonArray);
                 fiftyfiftyJoker2Button.setEnabled(false);
             }
         });
-        //Löst Exception aus wenn nur noch eine Lösung vorhanden ist
+        
+        /**
+         * Entfernt eine mögliche falsche Antwort
+         */
         eineAntwortRausnehmen1Button = new JButton("Entferne eine mögliche Antwort");
         eineAntwortRausnehmen1Button.setFont(mainFont);
         eineAntwortRausnehmen1Button.setEnabled(false);
         eineAntwortRausnehmen1Button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
+                /**
+                 * diese Methode entfernt die falsche Lösung (setzt den Text des entsprechenden Buttons auf "")
+                 * @param temp, index der frage und ButtonArray mit den antwortbuttons
+                 */
                 quizfunktionen.entferneEineLoesung(temp,buttonArray);
                 eineAntwortRausnehmen1Button.setEnabled(false);
             }
         });
-        //Löst Exception aus wenn nur noch eine Lösung vorhanden ist
+        
+        /**
+         * Entfernt eine mögliche falsche Antwort
+         */
         eineAntwortRausnehmen2Button = new JButton("Entferne eine mögliche Antwort");
         eineAntwortRausnehmen2Button.setFont(mainFont);
         eineAntwortRausnehmen2Button.setEnabled(false);
         eineAntwortRausnehmen2Button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
+                /**
+                 * diese Methode entfernt die falsche Lösung (setzt den Text des entsprechenden Buttons auf "")
+                 * @param temp, index der frage und ButtonArray mit den antwortbuttons
+                 */
                 quizfunktionen.entferneEineLoesung(temp, buttonArray);
                 eineAntwortRausnehmen2Button.setEnabled(false); 
             }
         });
 
+        /**
+         * Deckt die richtige Lösung auf, bzw. setzt den Text aller anderen Buttons auf ""
+         */
         loesungsButton = new JButton("Lösung aufdecken");
         loesungsButton.setFont(mainFont);
         loesungsButton.setEnabled(false);
         loesungsButton.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
+                /**
+                 * Ermittelt den Button mit der richtigen Lösung
+                 * @param temp, index der frage und ButtonArray mit den antwortbuttons
+                 */
                 quizfunktionen.deckeLoesungAuf(temp, buttonArray);
                 loesungsButton.setEnabled(false);
             }
         });
 
+        /**
+         * Panel für die Anzeige der verschiedenen Joker
+         */
         JPanel jokerButtonPanel = new JPanel();
         jokerButtonPanel.setOpaque(false);
         jokerButtonPanel.setLayout(new GridLayout(5,1,20,20));
@@ -195,26 +259,36 @@ public class QuizMainFrame extends JFrame {
         jokerButtonPanel.add(eineAntwortRausnehmen2Button);
         jokerButtonPanel.add(loesungsButton);
 
-
-
-        //Panel South, Start / NaechsteFrage Button plus Panel                                                                                                  *****naechsteFrage Button
-        naechsteFrage = new JButton("Nächste Frage");
+         //Panel South, Start / NaechsteFrage Button plus Panel                                                                                                  *****naechsteFrage Button
+        /**
+         * Button, der die aktuelle Frage durch eine neue ersetzt, entweder nach richtiger Beantwortung oder wenn man diese aktuell nicht beantworten will
+         */
+         naechsteFrage = new JButton("Nächste Frage");
         naechsteFrage.setFont(mainFont);
         naechsteFrage.setEnabled(false);
         naechsteFrage.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
+                //setzt die Farbe aller Buttons zurück, nachdem diese farbig markiert wurden
                 quizfunktionen.setzeButtonFarbeZurueck(buttonArray, buttonColor);
+                //gibt eine neue Frage aus und setzt den Text der Anzeige auf die neue Frage
                 temp = quizfunktionen.zufaelligeFrageNummerAusgeben(fragen);
                 anzeigeFrage.setText(fragen.gebeFrageAus(temp));
+                //gibt die neuen Antworten aus
                 fragen.gebeAntwortenAus(temp, buttonArray);
                 falscheAntwort = false;
             }
         });
 
+        /**
+         * ButtonArray das genutzt werden soll, wenn alle Fragen beantwortet wurden, damit man nicht weiter spielt
+         */
         buttonsDisablen = new JButton[]{antwort1,antwort2,antwort3,antwort4, naechsteFrage, fiftyfiftyJoker1Button,fiftyfiftyJoker2Button, loesungsButton,eineAntwortRausnehmen1Button,eineAntwortRausnehmen2Button};
 
         //                                                                                                                                                      ****StartButton
+        /**
+         * Start Button, der die erste Frage sowie deren Antworten aufruft und die anderen Buttons enabled
+         */
         startButton = new JButton("Start!");
         startButton.setFont(mainFont);
         startButton.addActionListener(new ActionListener() {
@@ -227,6 +301,10 @@ public class QuizMainFrame extends JFrame {
             }
         });
         //                                                                                                                                                      *****ButtonPanelSouth
+        
+        /**
+         * Panel für den StartButton und den nächsteFrageButton
+         */
         JPanel buttonPanelSouth = new JPanel();
         buttonPanelSouth.setOpaque(false);
         buttonPanelSouth.setLayout(new GridLayout(1,2,5,5));
