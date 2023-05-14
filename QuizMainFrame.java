@@ -70,6 +70,7 @@ public class QuizMainFrame extends JFrame {
         //Buttons für die Beantwortung der Fragen                                                                                                                *****Antwortbuttons 1 - 4
         antwort1 = new JButton("Antwort 1");
         antwort1.setFont(centerFont);
+        antwort1.setEnabled(false);
         antwort1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
@@ -81,6 +82,7 @@ public class QuizMainFrame extends JFrame {
 
         antwort2 = new JButton("Antwort 2");
         antwort2.setFont(centerFont);
+        antwort2.setEnabled(false);
         antwort2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
@@ -92,6 +94,7 @@ public class QuizMainFrame extends JFrame {
 
         antwort3 = new JButton("Antwort 3");
         antwort3.setFont(centerFont);
+        antwort3.setEnabled(false);
         antwort3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
@@ -103,6 +106,7 @@ public class QuizMainFrame extends JFrame {
 
         antwort4 = new JButton("Antwort 4");
         antwort4.setFont(centerFont);
+        antwort4.setEnabled(false);
         antwort4.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
@@ -129,6 +133,7 @@ public class QuizMainFrame extends JFrame {
         //Joker Panel, Joker Buttons                                                                                                                                        ****Joker Buttons
         fiftyfiftyJoker1Button = new JButton("50/50 Joker");
         fiftyfiftyJoker1Button.setFont(mainFont);
+        fiftyfiftyJoker1Button.setEnabled(false);
         fiftyfiftyJoker1Button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
@@ -139,6 +144,7 @@ public class QuizMainFrame extends JFrame {
 
         fiftyfiftyJoker2Button = new JButton("50/50 Joker");
         fiftyfiftyJoker2Button.setFont(mainFont);
+        fiftyfiftyJoker2Button.setEnabled(false);
         fiftyfiftyJoker2Button.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
@@ -149,6 +155,7 @@ public class QuizMainFrame extends JFrame {
         //Löst Exception aus wenn nur noch eine Lösung vorhanden ist
         eineAntwortRausnehmen1Button = new JButton("Entferne eine mögliche Antwort");
         eineAntwortRausnehmen1Button.setFont(mainFont);
+        eineAntwortRausnehmen1Button.setEnabled(false);
         eineAntwortRausnehmen1Button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
@@ -159,6 +166,7 @@ public class QuizMainFrame extends JFrame {
         //Löst Exception aus wenn nur noch eine Lösung vorhanden ist
         eineAntwortRausnehmen2Button = new JButton("Entferne eine mögliche Antwort");
         eineAntwortRausnehmen2Button.setFont(mainFont);
+        eineAntwortRausnehmen2Button.setEnabled(false);
         eineAntwortRausnehmen2Button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
@@ -169,6 +177,7 @@ public class QuizMainFrame extends JFrame {
 
         loesungsButton = new JButton("Lösung aufdecken");
         loesungsButton.setFont(mainFont);
+        loesungsButton.setEnabled(false);
         loesungsButton.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
@@ -177,7 +186,6 @@ public class QuizMainFrame extends JFrame {
             }
         });
 
-        buttonsDisablen = new JButton[]{antwort1, antwort2, antwort3, antwort4, fiftyfiftyJoker1Button, fiftyfiftyJoker2Button,eineAntwortRausnehmen1Button,eineAntwortRausnehmen2Button, loesungsButton, naechsteFrage};
         JPanel jokerButtonPanel = new JPanel();
         jokerButtonPanel.setOpaque(false);
         jokerButtonPanel.setLayout(new GridLayout(5,1,20,20));
@@ -192,6 +200,7 @@ public class QuizMainFrame extends JFrame {
         //Panel South, Start / NaechsteFrage Button plus Panel                                                                                                  *****naechsteFrage Button
         naechsteFrage = new JButton("Nächste Frage");
         naechsteFrage.setFont(mainFont);
+        naechsteFrage.setEnabled(false);
         naechsteFrage.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
@@ -202,12 +211,16 @@ public class QuizMainFrame extends JFrame {
                 falscheAntwort = false;
             }
         });
+
+        buttonsDisablen = new JButton[]{antwort1,antwort2,antwort3,antwort4, naechsteFrage, fiftyfiftyJoker1Button,fiftyfiftyJoker2Button, loesungsButton,eineAntwortRausnehmen1Button,eineAntwortRausnehmen2Button};
+
         //                                                                                                                                                      ****StartButton
         startButton = new JButton("Start!");
         startButton.setFont(mainFont);
         startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
+                quizfunktionen.startSequenz(buttonsDisablen);
                 temp = quizfunktionen.zufaelligeFrageNummerAusgeben(fragen);
                 anzeigeFrage.setText(fragen.gebeFrageAus(temp));
                 fragen.gebeAntwortenAus(temp, buttonArray);
@@ -241,10 +254,9 @@ public class QuizMainFrame extends JFrame {
         //Hinzufügen des jokerButtonPanels in East mit Border
         jokerButtonPanel.setBorder(BorderFactory.createEmptyBorder(5,5,10,10));
         mainPanel.add(jokerButtonPanel, BorderLayout.EAST);
-
+        
 
         add(mainPanel);
-        quizfunktionen.disableAlleButtons(buttonsDisablen);
 
 
         setTitle("Quiz");

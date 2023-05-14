@@ -178,7 +178,7 @@ public class Quizfunktionen {
         }
     }
 
-    public void disableAlleButtons(JButton[] buttons){
+    public void disableButtons(JButton[] buttons){
         for(JButton button: buttons){
             button.setEnabled(false);
         }
