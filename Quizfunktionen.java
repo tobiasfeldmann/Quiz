@@ -192,4 +192,13 @@ public class Quizfunktionen {
             button.setEnabled(false);
         }
     }
+
+    /**
+     * fuegt die Frage dem Set aus erledigten Fragen hinzu, wenn man den Knopf Nächste Frage drückt
+     * @param fragen, instanz der klasse Fragen
+     * @param i, index der aktuellen Frage
+     */
+    public void naechsteFrageAusgewaehlt(Fragen fragen, int i){
+        fragen.frageErledigt(i);
+    }
 }

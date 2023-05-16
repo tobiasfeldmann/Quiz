@@ -276,6 +276,7 @@ public class QuizMainFrame extends JFrame {
                 anzeigeFrage.setText(fragen.gebeFrageAus(temp));
                 //gibt die neuen Antworten aus
                 fragen.gebeAntwortenAus(temp, buttonArray);
+                quizfunktionen.naechsteFrageAusgewaehlt(fragen, temp);
                 falscheAntwort = false;
             }
         });

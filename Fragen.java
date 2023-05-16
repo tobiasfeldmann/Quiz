@@ -6,6 +6,7 @@ public class Fragen {
     String richtigeAntwort = "";
 
     Set<Integer> erledigteFragenKategorieMarvel = new TreeSet<Integer>();
+    Set<Integer> erledigteFragenKategorieOstfriesland = new TreeSet<Integer>();
     QuizMainFrame quizmainframe = new QuizMainFrame();
 
     /**
