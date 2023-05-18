@@ -35,6 +35,7 @@ public class MarvelFragen {
         "Palladium-Vergiftung",
         "6",
         "Even Dead I'm The Hero"
+
     };
 
     static String[] fragen = {
@@ -53,6 +54,7 @@ public class MarvelFragen {
         "An welcher Krankheit leidet Tony Stark zu Beginn von Iron Man 2?",
         "Wieviele Infinity Steine gibt es im MCU?",
         "Wofür steht E.D.I.T.H.?"
+        
     };
     
 }

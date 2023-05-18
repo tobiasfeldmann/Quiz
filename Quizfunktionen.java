@@ -5,6 +5,7 @@ import javax.swing.*;
 public class Quizfunktionen {
     int streakCounter = 0;
     int punkte = 0;
+    String kategorie = "";
 
     Random random = new Random();
 
@@ -14,12 +15,27 @@ public class Quizfunktionen {
      * @return int der Index der nächsten Frage
     */
     public int zufaelligeFrageNummerAusgeben(Fragen fragen){
-        int frageNummer = random.nextInt(MarvelFragen.fragen.length);
-        while(fragen.istBereitsBeantwortet(frageNummer) && !fragen.erledigteFragenKategorieMarvel.isEmpty()){
-            frageNummer = random.nextInt(MarvelFragen.fragen.length);
-            if(!fragen.istBereitsBeantwortet(frageNummer) && fragen.erledigteFragenKategorieMarvel.isEmpty()){
+        kategorie = fragen.getKategorie();
+        int frageNummer = -1;
+        switch(kategorie){
+            case "Marvel":
+                frageNummer = random.nextInt(MarvelFragen.fragen.length);
+                while(fragen.istBereitsBeantwortet(frageNummer) && !fragen.erledigteFragenKategorieMarvel.isEmpty()){
+                    frageNummer = random.nextInt(MarvelFragen.fragen.length);
+                    if(!fragen.istBereitsBeantwortet(frageNummer) && fragen.erledigteFragenKategorieMarvel.isEmpty()){
+                        break;
+                    }
+                }
                 break;
-            }
+            case "Ostfriesland":
+                frageNummer = random.nextInt(OstfrieslandFragen.fragen.length);
+                while(fragen.istBereitsBeantwortet(frageNummer) && !fragen.erledigteFragenKategorieOstfriesland.isEmpty()){
+                    frageNummer = random.nextInt(OstfrieslandFragen.fragen.length);
+                    if(!fragen.istBereitsBeantwortet(frageNummer) && fragen.erledigteFragenKategorieOstfriesland.isEmpty()){
+                        break;
+                    }
+                }
+                break;
         }
         return frageNummer;
     }
@@ -29,11 +45,20 @@ public class Quizfunktionen {
      * @param i der Index der Frage
      * @param buttonArray die AntwortButtons
      */
-    public void deckeLoesungAuf(int i, JButton[] buttonArray){
-        String richtigeLösung = MarvelFragen.richtigeAntwort[i];
+    public void deckeLoesungAuf(int i, JButton[] buttonArray, Fragen fragen){
+        String richtigeLoesung = "";
+        kategorie = fragen.getKategorie();
+        switch(kategorie){
+            case "Marvel":
+                richtigeLoesung = MarvelFragen.richtigeAntwort[i];
+                break;
+            case "Ostfriesland":
+                richtigeLoesung = OstfrieslandFragen.richtigeAntwort[i];
+                break;
+        }
         int richtigerIndex = - 1;
         for(int i1 = 0; i1 < buttonArray.length; i1++){
-            if(buttonArray[i1].getText().equals(richtigeLösung)){
+            if(buttonArray[i1].getText().equals(richtigeLoesung)){
                 richtigerIndex = i1;
             }
         }
@@ -49,10 +74,19 @@ public class Quizfunktionen {
         @param int i, index der Frage; JButton[] buttonArray ein Array der antwort buttons; int buttonIndex der index des buttons   
      */ 
     public void gebeRichtigeAntwort(int i, JButton[] buttonArray, int buttonIndex,Fragen fragen){
+        String richtigeLoesung = "";
+        kategorie = fragen.getKategorie();
+        switch(kategorie){
+            case "Marvel":
+                richtigeLoesung = MarvelFragen.richtigeAntwort[i];
+                break;
+            case "Ostfriesland":
+                richtigeLoesung = OstfrieslandFragen.richtigeAntwort[i];
+                break;
+        }
         int richtigerButtonIndex = -1;
-        String richtigeAntwort = MarvelFragen.richtigeAntwort[i];
         for(int i1 = 0; i1 < buttonArray.length; i1++){
-            if(buttonArray[i1].getText().equals(richtigeAntwort)){
+            if(buttonArray[i1].getText().equals(richtigeLoesung)){
                 richtigerButtonIndex = i1;
                 buttonArray[i1].setBackground(Color.green);
             }
@@ -76,11 +110,20 @@ public class Quizfunktionen {
      * gibt die richtige Lösung zurück, genutzt für den Joker eine Lösung zu entfernen
      * @param int i index der Frage; JButton[] button array das Array mit den Antwortbuttons
      */
-    public void entferneEineLoesung(int i, JButton[] buttonArray){
-        String richtigeAntwort = MarvelFragen.richtigeAntwort[i];
+    public void entferneEineLoesung(int i, JButton[] buttonArray,Fragen fragen){
+        String richtigeLoesung = "";
+        kategorie = fragen.getKategorie();
+        switch(kategorie){
+            case "Marvel":
+                richtigeLoesung = MarvelFragen.richtigeAntwort[i];
+                break;
+            case "Ostfriesland":
+                richtigeLoesung = OstfrieslandFragen.richtigeAntwort[i];
+                break;
+        }
         int richtigerIndex = -1;
         for(int i1 = 0; i1 < buttonArray.length; i1++){
-            if(buttonArray[i1].getText().equals(richtigeAntwort)){
+            if(buttonArray[i1].getText().equals(richtigeLoesung)){
                 richtigerIndex = i1;
             }
         
@@ -98,11 +141,20 @@ public class Quizfunktionen {
      * @param i index der Frage,
      * @param buttonArray JButton[] array mit den buttons der antworten
      */
-    public void entferneZweiLoesungen (int i, JButton[] buttonArray){
-        String richtigeAntwort = MarvelFragen.richtigeAntwort[i];
+    public void entferneZweiLoesungen (int i, JButton[] buttonArray,Fragen fragen){
+        String richtigeLoesung = "";
+        kategorie = fragen.getKategorie();
+        switch(kategorie){
+            case "Marvel":
+                richtigeLoesung = MarvelFragen.richtigeAntwort[i];
+                break;
+            case "Ostfriesland":
+                richtigeLoesung = OstfrieslandFragen.richtigeAntwort[i];
+                break;
+        }
         int richtigerIndex = -1;
         for(int i1 = 0; i1 < buttonArray.length; i1++){
-            if(buttonArray[i1].getText().equals(richtigeAntwort)){
+            if(buttonArray[i1].getText().equals(richtigeLoesung)){
                 richtigerIndex = i1;
             }
         }

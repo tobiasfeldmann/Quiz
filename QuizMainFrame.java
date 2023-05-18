@@ -52,6 +52,7 @@ public class QuizMainFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e){
                 anzeigeKategorie.setText(kategorieMarvel.getText());
+                fragen.setKategorie(kategorieMarvel.getText());
             }
         });
 
@@ -61,6 +62,7 @@ public class QuizMainFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e){
                 anzeigeKategorie.setText(kategorieOstfriesland.getText());
+                fragen.setKategorie(kategorieOstfriesland.getText()); 
             }
         });
 
@@ -170,7 +172,7 @@ public class QuizMainFrame extends JFrame {
                  * Diese Methode entfernt zwei mögliche, falsche Lösungen
                  * @param temp, index der aktuellen Frage sowie ButtonArray mit den AntwortButtons
                  * */
-                quizfunktionen.entferneZweiLoesungen(temp, buttonArray);
+                quizfunktionen.entferneZweiLoesungen(temp, buttonArray,fragen);
                 fiftyfiftyJoker1Button.setEnabled(false);
             }
         });
@@ -188,7 +190,7 @@ public class QuizMainFrame extends JFrame {
                  * Diese Methode entfernt zwei mögliche, falsche Lösungen
                  * @param temp, index der aktuellen Frage sowie ButtonArray mit den AntwortButtons
                  * */
-                quizfunktionen.entferneZweiLoesungen(temp, buttonArray);
+                quizfunktionen.entferneZweiLoesungen(temp, buttonArray,fragen);
                 fiftyfiftyJoker2Button.setEnabled(false);
             }
         });
@@ -206,7 +208,7 @@ public class QuizMainFrame extends JFrame {
                  * diese Methode entfernt die falsche Lösung (setzt den Text des entsprechenden Buttons auf "")
                  * @param temp, index der frage und ButtonArray mit den antwortbuttons
                  */
-                quizfunktionen.entferneEineLoesung(temp,buttonArray);
+                quizfunktionen.entferneEineLoesung(temp,buttonArray,fragen);
                 eineAntwortRausnehmen1Button.setEnabled(false);
             }
         });
@@ -224,7 +226,7 @@ public class QuizMainFrame extends JFrame {
                  * diese Methode entfernt die falsche Lösung (setzt den Text des entsprechenden Buttons auf "")
                  * @param temp, index der frage und ButtonArray mit den antwortbuttons
                  */
-                quizfunktionen.entferneEineLoesung(temp, buttonArray);
+                quizfunktionen.entferneEineLoesung(temp, buttonArray,fragen);
                 eineAntwortRausnehmen2Button.setEnabled(false); 
             }
         });
@@ -242,7 +244,7 @@ public class QuizMainFrame extends JFrame {
                  * Ermittelt den Button mit der richtigen Lösung
                  * @param temp, index der frage und ButtonArray mit den antwortbuttons
                  */
-                quizfunktionen.deckeLoesungAuf(temp, buttonArray);
+                quizfunktionen.deckeLoesungAuf(temp, buttonArray,fragen);
                 loesungsButton.setEnabled(false);
             }
         });
