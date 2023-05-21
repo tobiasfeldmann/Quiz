@@ -47,22 +47,38 @@ public class QuizMainFrame extends JFrame {
          * Button um die Kategorie Marvel zu wählen -> derzeit ohne Funktion
          */
         kategorieMarvel = new JButton("     Marvel   ");
+        kategorieMarvel.setCursor(new Cursor(HAND_CURSOR));
         kategorieMarvel.setFont(mainFont);
         kategorieMarvel.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
+                String kategorieAlt = fragen.getKategorie();
                 anzeigeKategorie.setText(kategorieMarvel.getText());
                 fragen.setKategorie(kategorieMarvel.getText());
+                if(!kategorieAlt.equals("kategorie")){
+                    temp = quizfunktionen.zufaelligeFrageNummerAusgeben(fragen);
+                    anzeigeFrage.setText(fragen.gebeFrageAus(temp));
+                    fragen.gebeAntwortenAus(temp, buttonArray);
+                }
+                quizfunktionen.setzeButtonFarbeZurueck(buttonArray, buttonColor);
             }
         });
 
         kategorieOstfriesland = new JButton("Ostfriesland");
+        kategorieOstfriesland.setCursor(new Cursor(HAND_CURSOR));
         kategorieOstfriesland.setFont(mainFont);
         kategorieOstfriesland.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
+                String kategorieAlt = fragen.getKategorie();
                 anzeigeKategorie.setText(kategorieOstfriesland.getText());
                 fragen.setKategorie(kategorieOstfriesland.getText()); 
+                if(!kategorieAlt.equals("kategorie")){
+                    temp = quizfunktionen.zufaelligeFrageNummerAusgeben(fragen);
+                    anzeigeFrage.setText(fragen.gebeFrageAus(temp));
+                    fragen.gebeAntwortenAus(temp, buttonArray);
+                }
+                quizfunktionen.setzeButtonFarbeZurueck(buttonArray, buttonColor);
             }
         });
 
@@ -261,11 +277,11 @@ public class QuizMainFrame extends JFrame {
         jokerButtonPanel.add(eineAntwortRausnehmen2Button);
         jokerButtonPanel.add(loesungsButton);
 
-         //Panel South, Start / NaechsteFrage Button plus Panel                                                                                                  *****naechsteFrage Button
+        //Panel South, Start / NaechsteFrage Button plus Panel                                                                                                  *****naechsteFrage Button
         /**
          * Button, der die aktuelle Frage durch eine neue ersetzt, entweder nach richtiger Beantwortung oder wenn man diese aktuell nicht beantworten will
          */
-         naechsteFrage = new JButton("Nächste Frage");
+        naechsteFrage = new JButton("Nächste Frage");
         naechsteFrage.setFont(mainFont);
         naechsteFrage.setEnabled(false);
         naechsteFrage.addActionListener(new ActionListener() {

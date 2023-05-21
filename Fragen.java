@@ -2,7 +2,7 @@ import java.util.*;
 import javax.swing.*;
 
 public class Fragen {
-    String kategorie = "";
+    String kategorie = "kategorie";
     String frage = "";
     String richtigeAntwort = "";
 
@@ -94,8 +94,10 @@ public class Fragen {
         switch(kategorie){
             case "Marvel":
                 erledigteFragenKategorieMarvel.add(i);
+                break;
             case "Ostfriesland":
                 erledigteFragenKategorieOstfriesland.add(i);
+                break;
         }
     }
 
