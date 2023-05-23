@@ -14,6 +14,7 @@ public class QuizMainFrame extends JFrame {
     JButton[] buttonsDisablen;
 
     public void initialize(Fragen fragen, Quizfunktionen quizfunktionen){
+        Icon marvel = new ImageIcon("C:/Users/tfgoe/Downloads/Marvel_Comics-logo-D489AEB9C1-seeklogo.com.png", "Marvel Logo");
 
         //Anzeige der Punkte + longest Streak                                                                                                           *****Punktetafel Anzeige  
         /**
@@ -46,15 +47,16 @@ public class QuizMainFrame extends JFrame {
         /**
          * Button um die Kategorie Marvel zu wählen -> derzeit ohne Funktion
          */
-        kategorieMarvel = new JButton("     Marvel   ");
+        kategorieMarvel = new JButton(marvel);
         kategorieMarvel.setCursor(new Cursor(HAND_CURSOR));
         kategorieMarvel.setFont(mainFont);
         kategorieMarvel.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
+                String kategorie = "Marvel";
                 String kategorieAlt = fragen.getKategorie();
-                anzeigeKategorie.setText(kategorieMarvel.getText());
-                fragen.setKategorie(kategorieMarvel.getText());
+                anzeigeKategorie.setText(kategorie);
+                fragen.setKategorie(kategorie);
                 if(!kategorieAlt.equals("kategorie")){
                     temp = quizfunktionen.zufaelligeFrageNummerAusgeben(fragen);
                     anzeigeFrage.setText(fragen.gebeFrageAus(temp));
