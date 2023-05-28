@@ -5,7 +5,7 @@ import javax.swing.*;
 public class QuizMainFrame extends JFrame {
     final private Font mainFont = new Font("Arial", Font.PLAIN, 18);
     final private Font centerFont = new Font("Arial", Font.PLAIN, 24);
-    JButton antwort1, antwort2, antwort3, antwort4, kategorieMarvel, kategorieOstfriesland, naechsteFrage, startButton, fiftyfiftyJoker1Button, fiftyfiftyJoker2Button, loesungsButton, eineAntwortRausnehmen1Button, eineAntwortRausnehmen2Button;
+    JButton antwort1, antwort2, antwort3, antwort4, kategorieMarvel, kategorieStarWars, kategorieAllgemeinWissen, kategorieOstfriesland, naechsteFrage, startButton, fiftyfiftyJoker1Button, fiftyfiftyJoker2Button, loesungsButton, eineAntwortRausnehmen1Button, eineAntwortRausnehmen2Button;
     JLabel anzeigeFrage, anzeigePunkte, anzeigeStreak, anzeigeKategorie;
     int temp;
     Color buttonColor;
@@ -84,13 +84,52 @@ public class QuizMainFrame extends JFrame {
             }
         });
 
+        kategorieStarWars = new JButton("Star Wars");
+        kategorieStarWars.setCursor(new Cursor(HAND_CURSOR));
+        kategorieStarWars.setFont(mainFont);
+        kategorieStarWars.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e){
+                String kategorieAlt = fragen.getKategorie();
+                anzeigeKategorie.setText(kategorieStarWars.getText());
+                fragen.setKategorie(kategorieStarWars.getText());
+                if(!kategorieAlt.equals("kategorie")) {
+                    temp = quizfunktionen.zufaelligeFrageNummerAusgeben(fragen);
+                    anzeigeFrage.setText(fragen.gebeFrageAus(temp));
+                    fragen.gebeAntwortenAus(temp, buttonArray);
+                }
+                quizfunktionen.setzeButtonFarbeZurueck(buttonArray, buttonColor);
+            }
+        });
+
+
+        kategorieAllgemeinWissen = new JButton("Allgemeinwissen");
+        kategorieAllgemeinWissen.setCursor(new Cursor(HAND_CURSOR));
+        kategorieAllgemeinWissen.setFont(mainFont);
+        kategorieAllgemeinWissen.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e){
+                String kategorieAlt = fragen.getKategorie();
+                anzeigeKategorie.setText(kategorieAllgemeinWissen.getText());
+                fragen.setKategorie(kategorieAllgemeinWissen.getText());
+                if(!kategorieAlt.equals("kategorie")) {
+                    temp = quizfunktionen.zufaelligeFrageNummerAusgeben(fragen);
+                    anzeigeFrage.setText(fragen.gebeFrageAus(temp));
+                    fragen.gebeAntwortenAus(temp, buttonArray);
+                }
+                quizfunktionen.setzeButtonFarbeZurueck(buttonArray, buttonColor);
+            }
+        });
+
         //Panel für die KategorieButtons                                                                                                                       *****Kategorie Panel
         /**
          * Panel für die Buttons zum wählen der Kategorie
          */
         JPanel kategorienPanel = new JPanel();
-        kategorienPanel.setLayout(new GridLayout(1,2,5,50));
+        kategorienPanel.setLayout(new GridLayout(1,4,5,50));
         kategorienPanel.setOpaque(false);
+        kategorienPanel.add(kategorieAllgemeinWissen);
+        kategorienPanel.add(kategorieStarWars);
         kategorienPanel.add(kategorieMarvel);
         kategorienPanel.add(kategorieOstfriesland);
 
