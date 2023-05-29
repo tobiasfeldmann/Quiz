@@ -22,18 +22,24 @@ public class Quizfunktionen {
                 frageNummer = random.nextInt(MarvelFragen.fragen.length);
                 while(fragen.istBereitsBeantwortet(frageNummer) && !fragen.erledigteFragenKategorieMarvel.isEmpty()){
                     frageNummer = random.nextInt(MarvelFragen.fragen.length);
-                    if(!fragen.istBereitsBeantwortet(frageNummer) && fragen.erledigteFragenKategorieMarvel.isEmpty()){
-                        break;
-                    }
                 }
                 break;
             case "Ostfriesland":
                 frageNummer = random.nextInt(OstfrieslandFragen.fragen.length);
                 while(fragen.istBereitsBeantwortet(frageNummer) && !fragen.erledigteFragenKategorieOstfriesland.isEmpty()){
                     frageNummer = random.nextInt(OstfrieslandFragen.fragen.length);
-                    if(!fragen.istBereitsBeantwortet(frageNummer) && fragen.erledigteFragenKategorieOstfriesland.isEmpty()){
-                        break;
-                    }
+                }
+                break;
+            case "Allgemeinwissen":
+                frageNummer = random.nextInt(AllgemeinWissenFragen.fragen.length);
+                while(fragen.istBereitsBeantwortet(frageNummer) && !fragen.erledigteFragenKategorieAllgemeinWissen.isEmpty()){
+                    frageNummer = random.nextInt(AllgemeinWissenFragen.fragen.length);
+                }
+                break;
+            case "StarWars":
+                frageNummer = random.nextInt(StarWarsFragen.fragen.length);
+                while(fragen.istBereitsBeantwortet(frageNummer) && !fragen.erledigteFragenKategorieStarWars.isEmpty()){
+                    frageNummer = random.nextInt(StarWarsFragen.fragen.length);
                 }
                 break;
         }
@@ -54,6 +60,12 @@ public class Quizfunktionen {
                 break;
             case "Ostfriesland":
                 richtigeLoesung = OstfrieslandFragen.richtigeAntwort[i];
+                break;
+            case "Allgemeinwissen":
+                richtigeLoesung = AllgemeinWissenFragen.richtigeAntwort[i];
+                break;
+            case "StarWars":
+                richtigeLoesung = StarWarsFragen.richtigeAntwort[i];
                 break;
         }
         int richtigerIndex = - 1;
@@ -82,6 +94,12 @@ public class Quizfunktionen {
                 break;
             case "Ostfriesland":
                 richtigeLoesung = OstfrieslandFragen.richtigeAntwort[i];
+                break;
+            case "Allgemeinwissen":
+                richtigeLoesung = AllgemeinWissenFragen.richtigeAntwort[i];
+                break;
+            case "StarWars":
+                richtigeLoesung = StarWarsFragen.richtigeAntwort[i];
                 break;
         }
         int richtigerButtonIndex = -1;
@@ -120,6 +138,12 @@ public class Quizfunktionen {
             case "Ostfriesland":
                 richtigeLoesung = OstfrieslandFragen.richtigeAntwort[i];
                 break;
+            case "Allgemeinwissen":
+                richtigeLoesung = AllgemeinWissenFragen.richtigeAntwort[i];
+                break;
+            case "StarWars":
+                richtigeLoesung = StarWarsFragen.richtigeAntwort[i];
+                break;
         }
         int richtigerIndex = -1;
         for(int i1 = 0; i1 < buttonArray.length; i1++){
@@ -150,6 +174,12 @@ public class Quizfunktionen {
                 break;
             case "Ostfriesland":
                 richtigeLoesung = OstfrieslandFragen.richtigeAntwort[i];
+                break;
+            case "Allgemeinwissen":
+                richtigeLoesung = AllgemeinWissenFragen.richtigeAntwort[i];
+                break;
+            case "StarWars":
+                richtigeLoesung = StarWarsFragen.richtigeAntwort[i];
                 break;
         }
         int richtigerIndex = -1;

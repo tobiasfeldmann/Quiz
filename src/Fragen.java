@@ -8,6 +8,8 @@ public class Fragen {
 
     Set<Integer> erledigteFragenKategorieMarvel = new TreeSet<Integer>();
     Set<Integer> erledigteFragenKategorieOstfriesland = new TreeSet<Integer>();
+    Set<Integer> erledigteFragenKategorieAllgemeinWissen = new TreeSet<Integer>();
+    Set<Integer> erledigteFragenKategorieStarWars = new TreeSet<Integer>();
     QuizMainFrame quizmainframe = new QuizMainFrame();
 
     /**
@@ -24,6 +26,14 @@ public class Fragen {
             case "Ostfriesland":
                 frage = OstfrieslandFragen.fragen[i];
                 richtigeAntwort = OstfrieslandFragen.richtigeAntwort[i];
+                return frage;
+            case "Allgemeinwissen":
+                frage = AllgemeinWissenFragen.fragen[i];
+                richtigeAntwort = AllgemeinWissenFragen.richtigeAntwort[i];
+                return frage;
+            case "StarWars":
+                frage = StarWarsFragen.fragen[i];
+                richtigeAntwort = StarWarsFragen.richtigeAntwort[i];
                 return frage;
         }
         return "Keine Kategorie ausgewählt";
@@ -46,6 +56,18 @@ public class Fragen {
             case "Ostfriesland":
                 for(JButton button: buttonArray){
                     button.setText(OstfrieslandFragen.antwortenOstfrieslandFragen[index]);
+                    index++;
+                }
+                break;
+            case "Allgemeinwissen":
+                for(JButton button: buttonArray){
+                    button.setText(AllgemeinWissenFragen.antwortenAllgemeinWissenFragen[index]);
+                    index++;
+                }
+                break;
+            case "StarWars":
+                for(JButton button: buttonArray){
+                    button.setText(StarWarsFragen.antwortenStarWarsFragen[index]);
                     index++;
                 }
                 break;
@@ -82,6 +104,28 @@ public class Fragen {
                 else{
                     return false;
                 }
+            case "Allgemeinwissen":
+                if(erledigteFragenKategorieAllgemeinWissen.size() == AllgemeinWissenFragen.fragen.length){
+                    Quizfunktionen.popUpAlleFragenBeantwortet();
+                    return false;
+                }
+                else if(erledigteFragenKategorieAllgemeinWissen.contains(iT)){
+                    return true;
+                }
+                else{
+                    return false;
+                }
+            case "StarWars":
+                if(erledigteFragenKategorieStarWars.size() == StarWarsFragen.fragen.length){
+                    Quizfunktionen.popUpAlleFragenBeantwortet();
+                    return false;
+                }
+                else if(erledigteFragenKategorieStarWars.contains(iT)){
+                    return true;
+                }
+                else{
+                    return false;
+                }
         }
         return false;
     }
@@ -97,6 +141,12 @@ public class Fragen {
                 break;
             case "Ostfriesland":
                 erledigteFragenKategorieOstfriesland.add(i);
+                break;
+            case "Allgemeinwissen":
+                erledigteFragenKategorieAllgemeinWissen.add(i);
+                break;
+            case "StarWars":
+                erledigteFragenKategorieStarWars.add(i);
                 break;
         }
     }
