@@ -47,7 +47,7 @@ public class QuizMainFrame extends JFrame {
         /**
          * Button um die Kategorie Marvel zu wählen -> derzeit ohne Funktion
          */
-        kategorieMarvel = new JButton(marvel);
+        kategorieMarvel = new JButton("Marvel");
         kategorieMarvel.setCursor(new Cursor(HAND_CURSOR));
         kategorieMarvel.setFont(mainFont);
         kategorieMarvel.addActionListener(new ActionListener() {
@@ -84,7 +84,7 @@ public class QuizMainFrame extends JFrame {
             }
         });
 
-        kategorieStarWars = new JButton("Star Wars");
+        kategorieStarWars = new JButton("StarWars");
         kategorieStarWars.setCursor(new Cursor(HAND_CURSOR));
         kategorieStarWars.setFont(mainFont);
         kategorieStarWars.addActionListener(new ActionListener() {
@@ -93,6 +93,7 @@ public class QuizMainFrame extends JFrame {
                 String kategorieAlt = fragen.getKategorie();
                 anzeigeKategorie.setText(kategorieStarWars.getText());
                 fragen.setKategorie(kategorieStarWars.getText());
+                System.out.println(fragen.getKategorie());
                 if(!kategorieAlt.equals("kategorie")) {
                     temp = quizfunktionen.zufaelligeFrageNummerAusgeben(fragen);
                     anzeigeFrage.setText(fragen.gebeFrageAus(temp));
