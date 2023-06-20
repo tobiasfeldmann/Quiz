@@ -14,8 +14,6 @@ public class QuizMainFrame extends JFrame {
     JButton[] buttonsDisablen;
 
     public void initialize(Fragen fragen, Quizfunktionen quizfunktionen){
-        Icon marvel = new ImageIcon("C:/Users/tfgoe/Downloads/Marvel_Comics-logo-D489AEB9C1-seeklogo.com.png", "Marvel Logo");
-
         //Anzeige der Punkte + longest Streak                                                                                                           *****Punktetafel Anzeige  
         /**
          * Anzeige der erzielten Punkte und der längsten Serie an richtigen Antworten sowie der Kategorie

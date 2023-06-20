@@ -13,7 +13,7 @@ public class StarWarsFragen {
 
     static String[] fragen = {
         "In welcher Episode wird Darth Vader 'geboren'?",
-        "Es gibt immer einen noch größeren _____ ?",
+        "Zitat: Es gibt immer einen noch größeren _____ ?",
         "In welcher Episode stirbt der Kopfgeldjäger Jango Fett?"
     };
 }

@@ -203,7 +203,7 @@ public class Quizfunktionen {
      * @return String von punkte, die Anzahl der Punkte
      */
     public String gebePunkteAus(){
-        return Integer.toString(punkte);
+        return "Aktuelle Punkte: " + Integer.toString(punkte);
     }
 
     public void berechnePunkte(){
@@ -233,7 +233,7 @@ public class Quizfunktionen {
      * @param streakcounter, das JLabel der Anzeige
      */
     public void gebeStreakcounterAus(JLabel streakcounter){
-        streakcounter.setText(Integer.toString(streakCounter));
+        streakcounter.setText("Aktuelle Streak: " + Integer.toString(streakCounter));
     }
 
     /**
