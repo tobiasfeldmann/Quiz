@@ -15,7 +15,8 @@ public class MarvelFragen {
         "zu süß","ekelhaft","zu nussig","bisschen trocken",
         "Folgen eines Herzinfarkts","Diarrhoe","Rheuma","Palladium-Vergiftung",
         "5","6","7","8",
-        "Eries Dactus Invictus Tangen Harus","Even Dead I'm The Hero","Eden Does Inherit The Home", "Eine Dattel ist tendenziell hochwachsend"
+        "Eries Dactus Invictus Tangen Harus","Even Dead I'm The Hero","Eden Does Inherit The Home", "Eine Dattel ist tendenziell hochwachsend",
+        "Hera", "Dr. Strange", "Der Hulk", "Thanos"
 
     };
 
@@ -34,7 +35,9 @@ public class MarvelFragen {
         "bisschen trocken",
         "Palladium-Vergiftung",
         "6",
-        "Even Dead I'm The Hero"
+        "Even Dead I'm The Hero",
+        "Thanos",
+        "Malekith", "Abomination","Yondu", "Star Lord"
 
     };
 
@@ -53,7 +56,10 @@ public class MarvelFragen {
         "Wie findet Dr. Strange die nach Tony Stark benannte Eissorte?",
         "An welcher Krankheit leidet Tony Stark zu Beginn von Iron Man 2?",
         "Wieviele Infinity Steine gibt es im MCU?",
-        "Wofür steht E.D.I.T.H.?"
+        "Wofür steht E.D.I.T.H.?",
+        "Wer tötet Loki (diesmal wirklich) ?",
+        "Wie hieß der Anführer der Dunkelelfen?"
+        
 
     };
     
